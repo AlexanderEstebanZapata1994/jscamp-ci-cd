@@ -36,23 +36,38 @@
                 </div>
                 <div class="search-filters">
                     <select name="technology" id="filter-technology">
-                        <option value="">Tecnología</option>
-                        <option value="javascript">JavaScript</option>
-                        <option value="python">Python</option>
+                        <option value="">Technologies</option>
+                        <optgroup label="Popular Technologies">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="react">React</option>
+                            <option value="nodejs">Node.js</option>
+                        </optgroup>
                         <option value="java">Java</option>
-                        <option value="react">React</option>
-                        <option value="nodejs">Node.js</option>
+                        <hr />
+                        <option value="csharp">C#</option>
+                        <option value="c">C</option>
+                        <option value="c++">C++</option>
+                        <hr />
+                        <option value="ruby">Ruby</option>
+                        <option value="php">PHP</option>
                     </select>
         
-                    <select name="location" id="location">
-                        <option value="">Ubicación</option>
-                        <option value="Remote">Remoto</option>
-                        <option value="Onsite">Onsite</option>
-                        <option value="Hybrid">Hybrid</option>
+                    <select name="location" id="filter-location">
+                        <option value="">Location</option>
+                        <option value="remote">Remote</option>
+                        <option value="cdmx">Mexico City</option>
+                        <option value="bsas">Buenos Aires</option>
+                        <option value="bogota">Bogotá</option>
+                        <option value="lima">Lima</option>
+                        <option value="madrid">Madrid</option>
+                        <option value="valencia">Valencia</option>
+                        <option value="monterrey">Monterrey</option>
+                        <option value="santiago">Santiago de Chile</option>
                     </select>
         
-                    <select name="experience-level" id="experience-level">
-                        <option value="">Nivel de experiencia</option>
+                    <select name="experience-level" id="filter-experience-level">
+                        <option value="">Experience Level</option>
                         <option value="junior">Junior</option>
                         <option value="mid">Mid-level</option>
                         <option value="senior">Senior</option>
@@ -64,78 +79,6 @@
         <section class="job-listings">
             <h2>Results of the search</h2>
             <div class="job-cards">
-                <article class="job-card">
-                    <div>
-                        <h3>Software Engineer</h3>
-                        <small>Tech Solutions |  Remote</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    </div>
-                    <button class="button-apply-job">Apply</button>
-                </article>
-                <article class="job-card">
-                    <div>
-                        <h3>Data Analyst</h3>
-                        <small>Google | Remote</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    </div>
-                    <button class="button-apply-job">Apply</button>
-                </article>
-                <article class="job-card">
-                    <div>   
-                        <h3>Product Manager</h3>
-                        <small>Facebook | Onsite</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    </div>
-                    <button class="button-apply-job">Apply</button>
-                </article>
-                <article class="job-card">
-                    <div>
-                        <h3>UI/UX Designer</h3>
-                        <small>Apple | Onsite</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    </div>
-                    <button class="button-apply-job">Apply</button>
-                </article>
-                <article class="job-card">
-                    <div>
-                        <h3>UI/UX Designer</h3>
-                        <small>Apple | Hybrid</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    </div>
-                    <button class="button-apply-job">Apply</button>
-                </article>
-                <article class="job-card">
-                    <div>
-                        <h3>UI/UX Designer</h3>
-                        <small>Apple | Onsite</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    </div>
-                    <button class="button-apply-job">Apply</button>
-                </article>
-                <article class="job-card">
-                    <div>
-                        <h3>UI/UX Designer</h3>
-                        <small>Apple | Hybrid</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    </div>
-                    <button class="button-apply-job">Apply</button>
-                </article>
-                <article class="job-card">
-                    <div>
-                        <h3>UI/UX Designer</h3>
-                        <small>Apple | Onsite</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    </div>
-                    <button class="button-apply-job">Apply</button>
-                </article>
-                <article class="job-card">
-                    <div>
-                        <h3>UI/UX Designer</h3>
-                        <small>Apple | Onsite</small>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    </div>
-                    <button class="button-apply-job">Apply</button>
-                </article>
             </div>
             
             <nav class="pagination">

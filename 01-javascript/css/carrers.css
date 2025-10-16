@@ -76,7 +76,14 @@ main section.job-listings {
     position: relative;
     margin: 5px;
     padding: 1rem 2rem;
+    &.is-hidden {
+        display: none;
+    }
     div {
+        h3 {
+            font-size: 1.15rem;
+            width: 70%;
+        }
         width: 100%;
         small {
             color: var(--text-muted);
@@ -92,10 +99,10 @@ main section.job-listings {
         border: none;
         border-radius: 0.5rem 0 0 0.5rem;
         right: 0;
-        top: 20px;
-        width: 20%;
-        height: 25%;
-        transition: box-shadow 0.3s linear;
+        top: 15px;
+        width: 100px;
+        height: 30px;
+        transition: box-shadow 0.1s ease-in-out;
         &:hover {
             background-color: var(--primary-hover);
             cursor: pointer;
@@ -108,9 +115,6 @@ main section.job-listings {
             outline-offset: 0;
             cursor: not-allowed;
         }
-    }
-    .is-hidden {
-        display: none;
     }
 }
 
