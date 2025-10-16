@@ -95,7 +95,7 @@ main section.job-listings {
         top: 20px;
         width: 20%;
         height: 25%;
-        transition: all 0.2s;
+        transition: box-shadow 0.3s linear;
         &:hover {
             background-color: var(--primary-hover);
             cursor: pointer;
@@ -108,6 +108,9 @@ main section.job-listings {
             outline-offset: 0;
             cursor: not-allowed;
         }
+    }
+    .is-hidden {
+        display: none;
     }
 }
 

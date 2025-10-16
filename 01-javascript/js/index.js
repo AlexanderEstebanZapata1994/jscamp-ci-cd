@@ -18,22 +18,32 @@ techSelect.addEventListener("change", (event) => {
 })
 
 locationSelect.addEventListener("change", (event) => {
-    console.log(event.target.value);
+  console.log(event.target.value);
 
-    const jobs = document.querySelectorAll(".job-card");
+  const jobs = document.querySelectorAll(".job-card");
 
-    if (event.target.value === "") {
-        jobs.forEach(job => {
-            job.style.display = "block";
-        })
-        return;
+  if (event.target.value === "") {
+    jobs.forEach((job) => {
+      job.style.display = "block";
+    });
+    return;
+  }
+  jobs.forEach((job) => {
+    if (
+      job
+        .querySelector("small")
+        .textContent.toLowerCase()
+        .includes(event.target.value.toLowerCase())
+    ) {
+      job.style.display = "block";
+    } else {
+      job.style.display = "none";
     }
-    debugger;
-    jobs.forEach(job => {
-        if (job.querySelector("small").textContent.toLowerCase().includes(event.target.value.toLowerCase())) {
-            job.style.display = "block";
-        } else {
-            job.style.display = "none";
-        }
-    })
-})
+  });
+});
+
+const searchForm = document.querySelector("#form-search");
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  console.log(event.target.value);
+});
