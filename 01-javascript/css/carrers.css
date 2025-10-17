@@ -76,6 +76,9 @@ main section.job-listings {
     position: relative;
     margin: 5px;
     padding: 1rem 2rem;
+    .is-hidden {
+        display: none;
+    }
     &.is-hidden {
         display: none;
     }

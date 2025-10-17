@@ -1,25 +1,84 @@
 const techSelect = document.querySelector("#filter-technology");
 const locationSelect = document.querySelector("#filter-location");
 const experienceSelect = document.querySelector("#filter-experience-level");
-
-techSelect.addEventListener("change", (event) => {
-    console.log(event.target.value);
-});
-
-locationSelect.addEventListener("change", (event) => {
-    const jobs = document.querySelectorAll(".job-card");
-    const locationSelected = event.target.value;
-
-    jobs.forEach((job) => {
-      const currentJobLocation = job.dataset.location;
-      const isShown =
-        locationSelected === currentJobLocation || locationSelected === "";
-      job.classList.toggle("is-hidden", !isShown);
-    });
-});
-
 const searchForm = document.querySelector("#form-search");
-searchForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    console.log(event.target.value);
+
+techSelect.addEventListener("change", () => {
+  filterData();
 });
+
+locationSelect.addEventListener("change", () => {
+  filterData();
+});
+
+experienceSelect.addEventListener("change", () => {
+  filterData();
+});
+
+const filterData = () => {
+  const {
+    searchValue,
+    technologySelected,
+    locationSelected,
+    experienceSelected,
+  } = getDataFromUI();
+  filteringData(
+    searchValue,
+    technologySelected,
+    locationSelected,
+    experienceSelected
+  );
+};
+
+const filteringData = (searchValue, technology, location, experience) => {
+  const jobs = document.querySelectorAll(".job-card");
+  jobs.forEach((job) => {
+    const currentJobTitle = job.dataset.title;
+    const currentJobTechnology = job.dataset.technology;
+    const currentJobLocation = job.dataset.location;
+    const currentJobExperience = job.dataset.level;
+    const isShown =
+      (searchValue === "" ||
+        currentJobTitle.toLowerCase().includes(searchValue.toLowerCase())) &&
+      (technology === "" ||
+        currentJobTechnology
+          .toLowerCase()
+          .includes(technology.toLowerCase())) &&
+      (location === "" ||
+        currentJobLocation.toLowerCase().includes(location.toLowerCase())) &&
+      (experience === "" ||
+        currentJobExperience.toLowerCase().includes(experience.toLowerCase()));
+    job.classList.toggle("is-hidden", !isShown);
+  });
+};
+
+const getDataFromUI = () => {
+  const searchValue = document.querySelector("#search-input").value;
+  const technologySelected = document.querySelector("#filter-technology").value;
+  const locationSelected = document.querySelector("#filter-location").value;
+  const experienceSelected = document.querySelector(
+    "#filter-experience-level"
+  ).value;
+  return {
+    searchValue,
+    technologySelected,
+    locationSelected,
+    experienceSelected,
+  };
+};
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const {
+    searchValue,
+    technologySelected,
+    locationSelected,
+    experienceSelected,
+  } = getDataFromUI();
+  filteringData(
+    searchValue,
+    technologySelected,
+    locationSelected,
+    experienceSelected
+  );
+});
+

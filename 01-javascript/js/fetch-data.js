@@ -8,6 +8,8 @@ export function fetchData() {
         jobCard.classList.add("job-card");
         jobCard.dataset.level = job.data.level;
         jobCard.dataset.location = job.data.location;
+        jobCard.dataset.title = job.title;
+        jobCard.dataset.technology = job.data.technologies.join(", ");
 
         jobCard.innerHTML = `
                     <div>
