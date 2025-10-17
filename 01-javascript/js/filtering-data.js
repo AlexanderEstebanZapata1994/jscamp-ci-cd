@@ -2,6 +2,7 @@ const techSelect = document.querySelector("#filter-technology");
 const locationSelect = document.querySelector("#filter-location");
 const experienceSelect = document.querySelector("#filter-experience-level");
 const searchForm = document.querySelector("#form-search");
+const searchInput = document.querySelector("#search-input");
 
 techSelect.addEventListener("change", () => {
   filterData();
@@ -15,14 +16,19 @@ experienceSelect.addEventListener("change", () => {
   filterData();
 });
 
+// Trigger filtering as the user types in the search field
+searchInput.addEventListener("keyup", () => {
+  filterData();
+});
+
 const filterData = () => {
   const {
     searchValue,
     technologySelected,
     locationSelected,
     experienceSelected,
-  } = getDataFromUI();
-  filteringData(
+  } = getCriteriaData();
+  hideDataFromUI(
     searchValue,
     technologySelected,
     locationSelected,
@@ -30,7 +36,7 @@ const filterData = () => {
   );
 };
 
-const filteringData = (searchValue, technology, location, experience) => {
+const hideDataFromUI = (searchValue, technology, location, experience) => {
   const jobs = document.querySelectorAll(".job-card");
   jobs.forEach((job) => {
     const currentJobTitle = job.dataset.title;
@@ -52,7 +58,7 @@ const filteringData = (searchValue, technology, location, experience) => {
   });
 };
 
-const getDataFromUI = () => {
+const getCriteriaData = () => {
   const searchValue = document.querySelector("#search-input").value;
   const technologySelected = document.querySelector("#filter-technology").value;
   const locationSelected = document.querySelector("#filter-location").value;
@@ -66,6 +72,7 @@ const getDataFromUI = () => {
     experienceSelected,
   };
 };
+
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const {
@@ -73,8 +80,8 @@ searchForm.addEventListener("submit", (event) => {
     technologySelected,
     locationSelected,
     experienceSelected,
-  } = getDataFromUI();
-  filteringData(
+  } = getCriteriaData();
+  hideDataFromUI(
     searchValue,
     technologySelected,
     locationSelected,

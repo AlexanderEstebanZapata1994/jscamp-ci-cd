@@ -75,6 +75,8 @@ main section.job-listings {
     display: flex;
     position: relative;
     margin: 5px;
+    max-width: 600px;
+    min-width: 300px;
     padding: 1rem 2rem;
     .is-hidden {
         display: none;
