@@ -28,7 +28,7 @@ const filterData = () => {
     locationSelected,
     experienceSelected,
   } = getCriteriaData();
-  hideDataFromUI(
+  filterDataFromUI(
     searchValue,
     technologySelected,
     locationSelected,
@@ -36,7 +36,7 @@ const filterData = () => {
   );
 };
 
-const hideDataFromUI = (searchValue, technology, location, experience) => {
+const filterDataFromUI = (searchValue, technology, location, experience) => {
   const jobs = document.querySelectorAll(".job-card");
   jobs.forEach((job) => {
     const currentJobTitle = job.dataset.title;
@@ -81,11 +81,10 @@ searchForm.addEventListener("submit", (event) => {
     locationSelected,
     experienceSelected,
   } = getCriteriaData();
-  hideDataFromUI(
+  filterDataFromUI(
     searchValue,
     technologySelected,
     locationSelected,
     experienceSelected
   );
 });
-
