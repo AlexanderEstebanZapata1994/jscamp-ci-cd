@@ -1,58 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DevJobs - Home">
-    <title>DevJobs - Carrers</title>
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/carrers.css">
-    <script type="module" src="./js/index.js"></script>
-
-    <script type="module">
-        import React from 'https://esm.sh/react?dev'
-        import ReactDOM from 'https://esm.sh/react-dom/client?dev'
-
-        window.React = React;
-        window.ReactDOMClient = ReactDOM;
-    </script>
-
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <script type="text/babel">
-        const empleos = [
-            { titulo: 'Frontend Developer', empresa: 'TechCorp', ubicacion: 'Madrid', descripcion: 'We are looking for a frontend developer with experience in React, JavaScript and HTML/CSS. The ideal candidate should be able to work in a team and have good communication skills.' },
-            { titulo: 'Backend Developer', empresa: 'CodeLabs', ubicacion: 'Barcelona', descripcion: 'We are looking for a backend developer with experience in Node.js, Python and SQL. The ideal candidate should be able to work in a team and have good communication skills.' },
-            { titulo: 'Full Stack Developer', empresa: 'DevStudio', ubicacion: 'Valencia', descripcion: 'We are looking for a full stack developer with experience in React, Node.js and SQL. The ideal candidate should be able to work in a team and have good communication skills.' },
-            { titulo: 'Full Stack Developer', empresa: 'DevStudio', ubicacion: 'Valencia', descripcion: 'We are looking for a full stack developer with experience in React, Node.js and SQL. The ideal candidate should be able to work in a team and have good communication skills.' },
-            { titulo: 'Full Stack Developer', empresa: 'DevStudio', ubicacion: 'Valencia', descripcion: 'We are looking for a full stack developer with experience in React, Node.js and SQL. The ideal candidate should be able to work in a team and have good communication skills.' },
-        ]
-
-        const app = (
-            <div>
-            <h1>DevJobs - Ofertas de empleo</h1>
-            <p>Hay {empleos.length} ofertas disponibles</p>
-
-            <article className="job-card">
-                <div>
-                    <h3>{empleos[0].titulo}</h3>
-                    <small>{empleos[0].empresa} | {empleos[0].ubicacion}</small>
-                    <p>{empleos[0].descripcion}</p>
-                </div>
-                <button className="button-apply-job">Aplicar</button>    
-            </article>
-            </div>
-        )
-        window.onload = () => {
-            const rootEl = document.querySelector('.job-cards')
-            const root = ReactDOMClient.createRoot(rootEl)
-
-            root.render(app)
-        }
-    </script>
-</head>
-<body>
-    <header>
+function App() {
+  return (
+    <>
+      <header>
         <div>
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="16 18 22 12 16 6"></polyline> <polyline points="8 6 2 12 8 18"></polyline></svg>
             <h1>DevJobs</h1>
@@ -74,10 +23,10 @@
             <form id="form-search" role="search">
                 <div class="search-bar">
                     <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="gray"  stroke-width="1.25"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
-                    <input id="search-input" type="search" placeholder="Search for either a job, companies or skills">
+                    <input id="search-input" type="search" placeholder="Search for either a job, companies or skills" />
                 </div>
                 <div class="search-filters">
-                    <!-- TODO: add filtering by multiple technologies here -->
+                    {/* TODO: add filtering by multiple technologies here */}
                     <select name="technology" id="filter-technology">
                         <option value="">Technologies</option>
                         <optgroup label="Popular Technologies">
@@ -125,7 +74,7 @@
             <div class="job-cards">
             </div>
             
-            <!-- TODO: add pagination here -->
+            {/* TODO: add pagination here */}
             <nav class="pagination">
                 <a href="#">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M15 6l-6 6l6 6" /></svg>
@@ -144,5 +93,8 @@
     <footer>
         <small>&copy; 2025 DevJobs. Todos los derechos reservados.</small>
     </footer>
-</body>
-</html>
+    </>
+  )
+}
+
+export default App
