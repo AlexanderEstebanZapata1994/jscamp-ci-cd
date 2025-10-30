@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 0.5rem;
+  margin-block: 2rem;
+}
+
+.paginationLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  &:hover {
+      background-color: var(--primary-light);
+      color: white;
+      border-radius: 0.5rem;
+      cursor: pointer;
+  }
+  &.isActive {
+    background-color: var(--primary-light);
+    color: white;
+    cursor: default;
+  }
+}
