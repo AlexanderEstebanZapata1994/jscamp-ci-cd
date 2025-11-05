@@ -17,7 +17,6 @@ function App() {
     const [experienceLevel, setExperienceLevel] = useState('');
     const [searchValue, setSearchValue] = useState('');
 
-    const totalPages = Math.ceil(jobsData.length / ITEMS_PER_PAGE)
     
     const handlePageChange = (page) => {
         setCurrentPage(page)
@@ -47,6 +46,7 @@ function App() {
         && (searchValue === '' || job.title.toLowerCase().includes(searchValue.toLowerCase()));
     })
 
+    const totalPages = Math.ceil(jobsFiltered.length / ITEMS_PER_PAGE)
     const jobsPaginated = jobsFiltered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
     return (
         <>
