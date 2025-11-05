@@ -1,9 +1,9 @@
 import { JobCard } from './Jobcard.jsx'
 
-export function Joblisting({jobs}) {
+export function Joblisting({jobs, totalJobsQty}) {
   return (
     <>
-      <h2>Results of the search {jobs.length}</h2>
+      <h3>Showing {jobs.length} of {totalJobsQty} results</h3>
       <div className="job-cards">
         {jobs.map(job => <JobCard key={job.id} job={job} />)}
       </div>

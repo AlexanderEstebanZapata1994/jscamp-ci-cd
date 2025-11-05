@@ -18,7 +18,11 @@ function App() {
         setCurrentPage(page)
     }
 
-    const jobsFiltered = jobsData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
+    const jobsFiltered = jobsData.filter(job => {
+        return job;
+    })
+
+    const jobsPaginated = jobsFiltered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
     return (
         <>
             <Header />
@@ -29,7 +33,7 @@ function App() {
                     <SearchForm />
                 </section>
                 <section className="job-listings">
-                    <Joblisting jobs={jobsFiltered} />
+                    <Joblisting jobs={jobsPaginated} totalJobsQty={jobsData.length} />
                     <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={(page) => handlePageChange(page)}/>
                 </section>
             </main>

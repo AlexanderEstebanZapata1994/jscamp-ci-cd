@@ -1,6 +1,6 @@
 # JS Camp from Midudev
 
-### With this project I pretend to show all the skills learned from Midudev bootcamp [Jscamp]((https://www.jscamp.dev/javascript/como-recuperar-datos-de-los-elementos-html))
+## With this project I pretend to show all the skills learned from Midudev bootcamp [Jscamp]((https://www.jscamp.dev/javascript/como-recuperar-datos-de-los-elementos-html))
 
 ## 📚 Bootcamp content
 
