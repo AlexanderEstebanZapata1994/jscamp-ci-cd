@@ -1,4 +1,14 @@
+import { useState } from "react"
+
 export function JobCard({job}) {
+
+  const [isApplied, setIsApplied] = useState(false)
+  const handleClickApplied = () => {
+    setIsApplied(true)
+  }
+
+  const buttonStyle = isApplied ? 'button-apply-job is-applied' : 'button-apply-job' // TODO: Apply CSS with module.css
+  const buttonText = isApplied ? 'Applied' : 'Apply Now'
   return (
     <article className="job-card"
       data-title={job.title}
@@ -11,7 +21,7 @@ export function JobCard({job}) {
         <small>{job.company} | {job.location}</small>
         <p>{job.description}</p>
       </div>
-      <button className="button-apply-job">Apply Now</button>
+      <button className={buttonStyle} onClick={handleClickApplied}>{buttonText}</button>
     </article>
   )
 }

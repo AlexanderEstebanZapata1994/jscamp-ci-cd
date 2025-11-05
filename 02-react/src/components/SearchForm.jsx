@@ -1,18 +1,33 @@
-export function SearchForm({onSearchChange, onLocationChange, onTechnologyChange, onExperienceLevelChange}) {
+import { useId } from "react";
 
-    const handleSearchKeyDown = (event) => {
+export function SearchForm({onFiltersChange}) {
+    const idText = useId();
+    const idTechnology = useId();
+    const idLocation = useId();
+    const idExperienceLevel = useId();
+
+    const handleFiltersChange = (event) => {
         event.preventDefault();
-        onSearchChange(event.target.value)
+        const form = document.getElementById("form-search");
+        const formData = new FormData(form);
+
+        const filters = {
+            searchValue: formData.get(idText),
+            technology: formData.get(idTechnology),
+            location: formData.get(idLocation),
+            experienceLevel: formData.get(idExperienceLevel),
+        }
+
+        onFiltersChange(filters)
     }
     return (
         <form id="form-search" role="search">
             <div className="search-bar">
                 <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="gray"  strokeWidth="1.25"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
-                <input id="search-input" type="search" placeholder="Search for either a job, companies or skills" onChange={handleSearchKeyDown} />
+                <input id={idText} name={idText} type="search" placeholder="Search for either a job, companies or skills" onChange={handleFiltersChange} />
             </div>
             <div className="search-filters">
-                {/* TODO: add filtering by multiple technologies here */}
-                <select name="technology" id="filter-technology" onChange={(e) => onTechnologyChange(e.target.value)}>
+                <select name={idTechnology} id={idTechnology} onChange={handleFiltersChange}>
                     <option value="">Technologies</option>
                     <optgroup label="Popular Technologies">
                         <option value="javascript">JavaScript</option>
@@ -30,7 +45,7 @@ export function SearchForm({onSearchChange, onLocationChange, onTechnologyChange
                     <option value="rust">Rust</option>
                 </select>
 
-                <select name="location" id="filter-location" onChange={(e) => onLocationChange(e.target.value)}>
+                <select name={idLocation} id={idLocation} onChange={handleFiltersChange}>
                     <option value="">Location</option>
                     <option value="remote">Remote</option>
                     <option value="cdmx">Mexico City</option>
@@ -44,7 +59,7 @@ export function SearchForm({onSearchChange, onLocationChange, onTechnologyChange
                     <option value="santiago">Santiago de Chile</option>
                 </select>
 
-                <select name="experience-level" id="filter-experience-level" onChange={(e) => onExperienceLevelChange(e.target.value)}>
+                <select name={idExperienceLevel} id={idExperienceLevel} onChange={handleFiltersChange}>
                     <option value="">Experience Level</option>
                     <option value="junior">Junior</option>
                     <option value="mid">Mid-level</option>
