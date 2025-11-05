@@ -12,14 +12,39 @@ const ITEMS_PER_PAGE = 6;
 
 function App() {
     const [currentPage, setCurrentPage] = useState(1);
+    const [location, setLocation] = useState('');
+    const [technology, setTechnology] = useState([]);
+    const [experienceLevel, setExperienceLevel] = useState('');
+    const [searchValue, setSearchValue] = useState('');
+
     const totalPages = Math.ceil(jobsData.length / ITEMS_PER_PAGE)
     
     const handlePageChange = (page) => {
         setCurrentPage(page)
     }
 
+    const handleTechnologyChange = (technology) => {
+        setTechnology(technology)
+    }
+
+    const handleLocationChange = (location) => {
+        console.log('location', location)
+        setLocation(location)
+    }
+
+    const handleExperienceLevelChange = (experienceLevel) => {
+        setExperienceLevel(experienceLevel)
+    }
+
+    const handleSearchChange = (searchValue) => {
+        setSearchValue(searchValue)
+    }
+
     const jobsFiltered = jobsData.filter(job => {
-        return job;
+        return job.data.location.toLowerCase().includes(location.toLowerCase()) 
+        && job.data.technologies.some(tech => tech.toLowerCase().includes(technology.join(',').toLowerCase())) 
+        && job.data.level.toLowerCase().includes(experienceLevel.toLowerCase())
+        && (searchValue === '' || job.title.toLowerCase().includes(searchValue.toLowerCase()));
     })
 
     const jobsPaginated = jobsFiltered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
@@ -30,10 +55,14 @@ function App() {
                 <section className="jobs-search">
                     <h1>Find your Next Job</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                    <SearchForm />
+                    <SearchForm 
+                        onSearchChange={(searchValue)=>handleSearchChange(searchValue)}
+                        onLocationChange={(location)=>handleLocationChange(location)} 
+                        onTechnologyChange={(technology)=>handleTechnologyChange(technology)} 
+                        onExperienceLevelChange={(experienceLevel)=>handleExperienceLevelChange(experienceLevel)}/>
                 </section>
                 <section className="job-listings">
-                    <Joblisting jobs={jobsPaginated} totalJobsQty={jobsData.length} />
+                    <Joblisting jobs={jobsPaginated} totalJobsQty={jobsFiltered.length} />
                     <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={(page) => handlePageChange(page)}/>
                 </section>
             </main>
