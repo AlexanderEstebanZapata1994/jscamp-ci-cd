@@ -27,7 +27,6 @@ function App() {
     }
 
     const handleLocationChange = (location) => {
-        console.log('location', location)
         setLocation(location)
     }
 
@@ -41,7 +40,7 @@ function App() {
 
     const jobsFiltered = jobsData.filter(job => {
         return job.data.location.toLowerCase().includes(location.toLowerCase()) 
-        && job.data.technologies.some(tech => tech.toLowerCase().includes(technology.join(',').toLowerCase())) 
+        && job.data.technologies.some(tech => tech.toLowerCase().includes(technology)) 
         && job.data.level.toLowerCase().includes(experienceLevel.toLowerCase())
         && (searchValue === '' || job.title.toLowerCase().includes(searchValue.toLowerCase()));
     })

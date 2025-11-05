@@ -9,18 +9,22 @@ export function Pagination({ currentPage = 1, totalPages = 5, onPageChange}) {
   const nextPageStyle = isLastPage ? { pointerEvents: 'none', opacity: 0.5} : {};
 
   const handlePrevPage = () => {
-    if (isFirstPage) return;
-    onPageChange(currentPage - 1);
+    if (!isFirstPage) {
+      onPageChange(currentPage - 1);
+    }
   }
 
   const handleNextPage = () => {
-    if (isLastPage) return;
-    onPageChange(currentPage + 1)
+    if (!isLastPage) {
+      onPageChange(currentPage + 1);
+    }
   }
 
-  const handlePageClick = (page) => {
-    if (page === currentPage) return;
-    onPageChange(page)
+  const handlePageClick = (event, page) => {
+    event.preventDefault();
+    if (page !== currentPage) {
+      onPageChange(page);
+    }
   }
   
   return (
@@ -30,7 +34,7 @@ export function Pagination({ currentPage = 1, totalPages = 5, onPageChange}) {
       </a>
       {
         pages.map(page => {
-          return (<a key={page} className={`${styles.paginationLink} ${page === currentPage ? styles.isActive : null}`} onClick={() => handlePageClick(page)}>{page}</a>)
+          return (<a key={page} className={`${styles.paginationLink} ${page === currentPage ? styles.isActive : null}`} onClick={(e) => handlePageClick(e,page)}>{page}</a>)
         })
       }
       <a className={styles.paginationLink} style={nextPageStyle} onClick={handleNextPage}>

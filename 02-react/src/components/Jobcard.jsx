@@ -4,7 +4,7 @@ export function JobCard({job}) {
       data-title={job.title}
       data-level={job.data.level}
       data-location={job.data.location}
-      data-technologies={job.data.technologies.join(", ")}
+      data-technologies={job.data.technologies}
     >
       <div>
         <h3>{job.title}</h3>
