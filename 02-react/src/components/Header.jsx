@@ -1,19 +1,17 @@
+import { Link } from './Link.jsx'
 export function Header() {
-  return (
-      <header>
-          <div>
-              <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="16 18 22 12 16 6"></polyline> <polyline points="8 6 2 12 8 18"></polyline></svg>
-              <h1>DevJobs</h1>
-          </div>
-          <nav>
-              <a href="./index.html">Inicio</a>
-              <a href="./carrers.html" style={{ color: 'var(--primary-light)' }}>Empleos</a>
-          </nav>
+    return (
+        <header>
+            <Link href="/" style={{textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"></polyline> <polyline points="8 6 2 12 8 18"></polyline></svg>
+                <h1 style={{color: 'var(--text-primary)',}}>
+                    DevJobs
+                </h1>
+            </Link>
 
-          <div>
-              <a href="">Upload your CV</a>
-              <avatar-profile service="github" username="AlexanderEstebanZapata1994" size="32"></avatar-profile>
-          </div>
-      </header>
-  )
+            <div>
+                <Link href="/search">Jobs</Link>
+            </div>
+        </header>
+    )
 }
