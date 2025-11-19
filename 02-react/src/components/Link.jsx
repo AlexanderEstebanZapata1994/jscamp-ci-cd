@@ -10,6 +10,7 @@ export const Link = ({href, children, ...otherProps}) => {
   }
 
   return (
+    /* TODO: Add a class when the link is active (use the currentPath hook) */
     <a href={href} {...otherProps} onClick={handleClick}>
       {children}
     </a>

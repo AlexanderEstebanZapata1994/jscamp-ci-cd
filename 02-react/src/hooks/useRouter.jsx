@@ -1,24 +1,24 @@
 import { useState, useEffect } from "react";
 
 export const useRouter = () => {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  
-  const handlePopState = () => {
-      setCurrentPath(window.location.pathname);
-  }
-  
-  useEffect(() => {
-      window.addEventListener('popstate', handlePopState);
+const [currentPath, setCurrentPath] = useState(window.location.pathname);
 
-      return () => {
-          window.removeEventListener('popstate', handlePopState);
-      }
-  }, [currentPath]);
+const handleLocationChange = () => {
+    setCurrentPath(window.location.pathname);
+}
 
-  const navigateTo = (path) => {
-      window.history.pushState({}, '', path);
-      window.dispatchEvent(new PopStateEvent('popstate'))
-  }
+useEffect(() => {
+    window.addEventListener('popstate', handleLocationChange);
 
-  return { currentPath, navigateTo };
+    return () => {
+        window.removeEventListener('popstate', handleLocationChange);
+    }
+}, [currentPath]);
+
+const navigateTo = (path) => {
+    window.history.pushState({}, '', path);
+    window.dispatchEvent(new PopStateEvent('popstate'))
+}
+
+return { currentPath, navigateTo };
 }
