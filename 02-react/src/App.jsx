@@ -3,17 +3,17 @@ import { Home } from './pages/Home.jsx'
 import { Footer } from './components/Footer.jsx'
 import { Search } from './pages/Search.jsx'
 import { NotFoundPage } from './pages/404.jsx'
-import { Router } from './components/Router.jsx'
+import { Route } from './components/Route.jsx'
 
 function App() {
 
     return (
         <>
             <Header />
-            <Router path="/" component={<Home />} />
-            <Router path="/search" component={<Search />} />
+            <Route path="/" component={<Home />} />
+            <Route path="/search" component={<Search />} />
             {/* TODO: Add a new route */}
-            <Router path="*" component={<NotFoundPage />} />
+            <Route path="*" component={<NotFoundPage />} />
             <Footer />
         </>
     )

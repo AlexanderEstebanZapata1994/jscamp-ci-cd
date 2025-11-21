@@ -8,13 +8,13 @@ export const Home = () => {
         event.preventDefault();
         const form = new FormData(event.currentTarget);
         const searchText = form.get('searchText');
-        const url = searchText ? `/search?text=${encodeURIComponent(searchText)}` : `/search`;
+        const url = `/search`+ (searchText ? `?text=${encodeURIComponent(searchText)}` : '');
         navigateTo(url);
     }
     return (
         <main>
             <section>
-                <img src="./assets/img/background.webp" width="200" />
+                <img src="../assets/img/background.webp" width="200" />
 
                 <h1>Encuentra el trabajo de tus sueños</h1>
 
@@ -23,13 +23,18 @@ export const Home = () => {
                 <form role="search-index" onSubmit={handleSearch}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-search">
+                        className="icon icon-tabler icons-tabler-outline icon-tabler-search">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
                         <path d="M21 21l-6 -6" />
                     </svg>
 
-                    <input name="searchText" required type="text" placeholder="Search for either a job, companies or skills" />
+                    <input 
+                        name="searchText" 
+                        required 
+                        type="text" 
+                        placeholder="Search for either a job, companies or skills" 
+                    />
 
                     <button type="submit">Search</button>
                 </form>

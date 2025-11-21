@@ -1,26 +1,5 @@
 import { useId } from "react";
-
-const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLevel, onFiltersChange}) => {
-
-    const handleSubmitChange = (event) => {
-        event.preventDefault();
-        const form = document.getElementById(event.currentTarget.id);
-        const formData = new FormData(form);
-
-        const filters = {
-            textToFilter: formData.get(idText),
-            technology: formData.get(idTechnology),
-            location: formData.get(idLocation),
-            experienceLevel: formData.get(idExperienceLevel),
-        }
-
-        onFiltersChange(filters)
-    }
-
-    return {
-        handleSubmitChange
-    }
-}
+import { useSearchForm } from "../hooks/useSearchForm";
 
 export function SearchForm({onFiltersChange}) {
     const idText = useId();

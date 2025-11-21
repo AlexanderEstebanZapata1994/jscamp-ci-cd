@@ -1,6 +1,6 @@
 import { useRouter } from "../hooks/useRouter";
 
-export const Router = ({path, component}) => {
+export const Route = ({path, component}) => {
   const { currentPath } = useRouter();
 
   if (currentPath !== path) return null;
