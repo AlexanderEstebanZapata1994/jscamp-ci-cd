@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { useSearchForm } from "../hooks/useSearchForm";
+import { useSearchForm } from "../../../hooks/useSearchForm.jsx";
 
 export function SearchForm({onFiltersChange}) {
     const idText = useId();
@@ -30,7 +30,7 @@ export function SearchForm({onFiltersChange}) {
     return (
         <form onChange={handleSubmitChange} id="form-search" role="search">
             <div className="search-bar">
-                <svg id="search-icon"  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="gray"  strokeWidth="1.25"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
+                <svg id="search-icon"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="gray"  strokeWidth="1.25"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
                 <input 
                     name={idText}
                     type="search" 

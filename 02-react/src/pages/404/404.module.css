@@ -1,0 +1,29 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  gap: 1rem;
+
+  img {
+    width: 30vw;
+    height: 30vh;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: var(--primary-light);
+    color: var(--text-primary);
+    border: 1px solid var(--primary);
+  }
+}

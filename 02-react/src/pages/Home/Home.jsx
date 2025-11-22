@@ -1,4 +1,5 @@
-import { useRouter } from "../hooks/useRouter";
+import { useRouter } from "../../hooks/useRouter.jsx"; 
+import BackgroundImage from '../../assets/img/background.webp'
 
 export const Home = () => {
 
@@ -14,7 +15,7 @@ export const Home = () => {
     return (
         <main>
             <section>
-                <img src="../assets/img/background.webp" width="200" />
+                <img src={BackgroundImage} width="200" />
 
                 <h1>Encuentra el trabajo de tus sueños</h1>
 

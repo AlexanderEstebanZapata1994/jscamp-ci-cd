@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 
 // Putting the extension is a good practice to avoid performance issues with the browser
-import { Pagination } from '../components/Pagination.jsx'
-import { SearchForm } from '../components/SearchForm.jsx'
-import { Joblisting } from '../components/Joblisting.jsx'
-import { useFilters } from '../hooks/useFilters.jsx';
+import { Pagination } from '../../components/Pagination/Pagination.jsx'
+import { SearchForm } from './components/SearchForm.jsx'
+import { Joblisting } from './components/Joblisting.jsx'
+import { useFilters } from '../../hooks/useFilters.jsx';
 
 export const Search = () => {
     // TODO: issue when located in the second page and the user tries filtering the jobs, showing results in pagination but not the cards.

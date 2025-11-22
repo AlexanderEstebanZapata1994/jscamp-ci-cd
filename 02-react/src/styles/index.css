@@ -118,7 +118,7 @@ header div a {
 
 /* Hero */
 main>section:nth-child(1) {
-  height: 500px;
+  height: 300px;
   text-align: center;
   display: flex;
   flex-direction: column;

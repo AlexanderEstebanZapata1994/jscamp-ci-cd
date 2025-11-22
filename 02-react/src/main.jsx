@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
-import './css/index.css'
-import './css/carrers.css'
+import './styles/index.css'
+import './styles/carrers.css'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(

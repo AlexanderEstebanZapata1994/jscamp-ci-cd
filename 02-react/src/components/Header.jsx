@@ -1,4 +1,4 @@
-import { Link } from './Link.jsx'
+import { Link } from './Link/Link.jsx'
 export function Header() {
     return (
         <header>
