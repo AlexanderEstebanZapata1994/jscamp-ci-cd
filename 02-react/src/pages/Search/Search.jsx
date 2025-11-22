@@ -6,7 +6,7 @@ import { SearchForm } from './components/SearchForm.jsx'
 import { Joblisting } from './components/Joblisting.jsx'
 import { useFilters } from '../../hooks/useFilters.jsx';
 
-export const Search = () => {
+export default function Search() {
     // TODO: issue when located in the second page and the user tries filtering the jobs, showing results in pagination but not the cards.
     const { 
         loading,

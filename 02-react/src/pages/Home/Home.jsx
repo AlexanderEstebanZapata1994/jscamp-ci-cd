@@ -1,7 +1,7 @@
 import { useRouter } from "../../hooks/useRouter.jsx"; 
 import BackgroundImage from '../../assets/img/background.webp'
 
-export const Home = () => {
+export default function Home() {
 
     const { navigateTo } = useRouter();
 

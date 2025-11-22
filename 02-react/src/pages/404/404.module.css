@@ -14,7 +14,7 @@
   }
 }
 
-.link {
+.linkButton {
   text-decoration: none;
   color: var(--text-primary);
   padding: 0.5rem 1rem;

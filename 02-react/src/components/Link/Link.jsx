@@ -1,7 +1,7 @@
 import { useRouter } from "../../hooks/useRouter.jsx";
 import styles from './Link.module.css';
 
-export const Link = ({href, children, ...otherProps}) => {
+export const Link = ({href, children, className, ...otherProps}) => {
   
   const { currentPath, navigateTo } = useRouter();
   
@@ -15,7 +15,7 @@ export const Link = ({href, children, ...otherProps}) => {
     <a 
       href={href} {...otherProps} 
       onClick={handleClick}
-      className={isActive ? styles.active : ''}
+      className={`${className} ${isActive ? styles.active : ''}`}
     >
       {children}
     </a>
