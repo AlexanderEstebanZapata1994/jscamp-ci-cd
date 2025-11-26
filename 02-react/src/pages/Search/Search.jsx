@@ -31,20 +31,22 @@ export default function Search() {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
                 <SearchForm onFiltersChange={(filters)=>handleFiltersChange(filters)} />
             </section>
-            { loading ? <h3 style={{ textAlign: 'center', margin: '20px' }}>Loading data...</h3> : (
-                <section className="job-listings">
+            <section className="job-listings">
+                { loading ? <h3 style={{ textAlign: 'center', margin: '20px' }}>Loading data...</h3> : (
                     <Joblisting 
                         jobs={jobs} 
                         totalJobsQty={total} 
                     />
+                )}
+
+                {totalPages >= 1 && (
                     <Pagination 
                         currentPage = { currentPage || 1 } 
                         totalPages = { totalPages } 
                         onPageChange={(page) => handlePageChange(page)}
                     />
-                </section>
-            )}
-            
+                )}
+            </section>
         </main>
     )
 }

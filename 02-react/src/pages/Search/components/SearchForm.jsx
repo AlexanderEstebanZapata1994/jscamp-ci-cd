@@ -60,7 +60,7 @@ export function SearchForm({onFiltersChange}) {
 
                 <select name={idLocation} id={"filter-location"}>
                     <option value="">Location</option>
-                    <option value="remote">Remote</option>
+                    <option value="remoto">Remote</option>
                     <option value="cdmx">Mexico City</option>
                     <option value="bsas">Buenos Aires</option>
                     <option value="guadalajara">Guadalajara</option>

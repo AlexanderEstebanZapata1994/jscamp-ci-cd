@@ -11,6 +11,7 @@ export function Header() {
 
             <div>
                 <Link href="/search">Jobs</Link>
+                <Link href="/contact">Contact</Link>
             </div>
         </header>
     )
