@@ -39,6 +39,8 @@ export function SearchForm({onFiltersChange}) {
         handleClearFilters(event);
     }
 
+    const isAnyFilterApplied = () => (textToFilter !== '' || technology.length > 0 || location !== '' || experienceLevel !== '') ? true : false;
+
     return (
         <form onChange={handleSubmitChange} id="form-search" role="search">
             <div className={styles.searchBar}>
@@ -108,15 +110,16 @@ export function SearchForm({onFiltersChange}) {
                     <option value="senior">Senior</option>
                     <option value="lead">Lead</option>
                 </select>
-                <button 
-                    className={styles.clearFiltersButton} 
-                    type="button"
-                    aria-label="Clear Filters"
-                    title="Clear Filters"
-                    hidden={!textToFilter === '' && technology.length === 0 && location === '' && experienceLevel === ''}
-                    onClick={handleClearFiltersInput}>
-                        Clear Filters
-                </button>
+                {isAnyFilterApplied() && 
+                    <button 
+                        className={styles.clearFiltersButton} 
+                        type="button"
+                        aria-label="Clear Filters"
+                        title="Clear Filters"
+                        onClick={handleClearFiltersInput}
+                    >Clear Filters
+                    </button> 
+                }
             </div>
         </form>
     );
