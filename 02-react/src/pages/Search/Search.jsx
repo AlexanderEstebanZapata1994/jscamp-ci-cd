@@ -5,6 +5,7 @@ import { Pagination } from '../../components/Pagination/Pagination.jsx'
 import SearchForm from './components/SearchForm/index.js'
 import { Joblisting } from './components/Joblisting.jsx'
 import { useFilters } from '../../hooks/useFilters.jsx';
+import Spinner from '../../components/Spinner/index.js';
 
 export default function Search() {
     const { 
@@ -31,7 +32,7 @@ export default function Search() {
                 <SearchForm onFiltersChange={(filters)=>handleFiltersChange(filters)} />
             </section>
             <section className="job-listings">
-                { loading ? <h3 style={{ textAlign: 'center', margin: '20px' }}>Loading data...</h3> : (
+                { loading ? <Spinner text="Retrieving jobs..." width="200px" height="200px" animationDuration=".5s" borderWidth="5px" /> : (
                     <Joblisting 
                         jobs={jobs} 
                         totalJobsQty={total} 
