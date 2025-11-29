@@ -1,5 +1,7 @@
 import { useId } from "react";
-import { useSearchForm } from "../../../hooks/useSearchForm.jsx";
+import { useSearchForm } from "../../../../hooks/useSearchForm.jsx";
+import { useFilters } from "../../../../hooks/useFilters.jsx";
+import styles from "./SearchForm.module.css";
 
 export function SearchForm({onFiltersChange}) {
     const idText = useId();
@@ -7,8 +9,9 @@ export function SearchForm({onFiltersChange}) {
     const idLocation = useId();
     const idExperienceLevel = useId();
 
-    const { handleSubmitChange } = useSearchForm({idText, idTechnology, idLocation, idExperienceLevel, onFiltersChange})
-    
+    const { textToFilter, setTextToFilter, technology, setTechnology, location, setLocation, experienceLevel, setExperienceLevel } = useFilters();
+
+    const { handleSubmitChange, handleClearFilters } = useSearchForm({idText, idTechnology, idLocation, idExperienceLevel, onFiltersChange})
 
     const handleFocusIn = () => {
         const searchIcon = document.getElementById("search-icon");
@@ -27,20 +30,36 @@ export function SearchForm({onFiltersChange}) {
 
     }
 
+    const handleClearFiltersInput = (event) => {
+        event.preventDefault();
+        setTextToFilter('');
+        setTechnology([]);
+        setLocation('');
+        setExperienceLevel('');
+        handleClearFilters(event);
+    }
+
     return (
         <form onChange={handleSubmitChange} id="form-search" role="search">
-            <div className="search-bar">
+            <div className={styles.searchBar}>
                 <svg id="search-icon"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="gray"  strokeWidth="1.25"  strokeLinecap="round"  strokeLinejoin="round"  className="icon icon-tabler icons-tabler-outline icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" /><path d="M21 21l-6 -6" /></svg>
                 <input 
                     name={idText}
-                    type="search" 
+                    type="search"
+                    value={textToFilter}
+                    onChange={(event) => setTextToFilter(event.target.value)}
                     placeholder="Search for either a job, companies or skills"
                     onFocus={handleFocusIn}
                     onBlur={handleFocusOut}
                 />
             </div>
-            <div className="search-filters">
-                <select name={idTechnology} id={"filter-technology"}>
+            <div className={styles.searchFilters}>
+                <select 
+                    name={idTechnology} 
+                    id={"filter-technology"} 
+                    value={technology.join()} 
+                    onChange={(event) => setTechnology([event.target.value])}
+                >
                     <option value="">Technologies</option>
                     <optgroup label="Popular Technologies">
                         <option value="javascript">JavaScript</option>
@@ -58,7 +77,12 @@ export function SearchForm({onFiltersChange}) {
                     <option value="rust">Rust</option>
                 </select>
 
-                <select name={idLocation} id={"filter-location"}>
+                <select 
+                    name={idLocation} 
+                    id={"filter-location"} 
+                    value={location} 
+                    onChange={(event) => setLocation(event.target.value)}
+                >
                     <option value="">Location</option>
                     <option value="remoto">Remote</option>
                     <option value="cdmx">Mexico City</option>
@@ -72,13 +96,27 @@ export function SearchForm({onFiltersChange}) {
                     <option value="santiago">Santiago de Chile</option>
                 </select>
 
-                <select name={idExperienceLevel} id={"filter-experience-level"}>
+                <select 
+                    name={idExperienceLevel} 
+                    id={"filter-experience-level"} 
+                    value={experienceLevel} 
+                    onChange={(event) => setExperienceLevel(event.target.value)}
+                >
                     <option value="">Experience Level</option>
                     <option value="junior">Junior</option>
                     <option value="mid">Mid-level</option>
                     <option value="senior">Senior</option>
                     <option value="lead">Lead</option>
                 </select>
+                <button 
+                    className={styles.clearFiltersButton} 
+                    type="button"
+                    aria-label="Clear Filters"
+                    title="Clear Filters"
+                    hidden={!textToFilter === '' && technology.length === 0 && location === '' && experienceLevel === ''}
+                    onClick={handleClearFiltersInput}>
+                        Clear Filters
+                </button>
             </div>
         </form>
     );

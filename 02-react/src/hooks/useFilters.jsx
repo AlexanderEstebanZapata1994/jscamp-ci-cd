@@ -52,13 +52,21 @@ export const useFilters = () => {
     const handleFiltersChange = (filters) => {
         setTextToFilter(filters.textToFilter)
         setLocation(filters.location)
-        setTechnology(filters.technology)
+        setTechnology(filters.technology.join())
         setExperienceLevel(filters.experienceLevel)
     }
 
     const totalPages = Math.ceil(total / ITEMS_PER_PAGE)
 
     return {
+        textToFilter,
+        setTextToFilter,
+        location,
+        setLocation,
+        technology,
+        setTechnology,
+        experienceLevel,
+        setExperienceLevel,
         loading,
         jobs,
         total,

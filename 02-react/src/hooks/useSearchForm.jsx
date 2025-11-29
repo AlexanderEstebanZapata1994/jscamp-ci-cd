@@ -6,15 +6,26 @@ export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLev
 
         const filters = {
             textToFilter: formData.get(idText),
-            technology: formData.get(idTechnology),
+            technology: [formData.get(idTechnology)],
             location: formData.get(idLocation),
             experienceLevel: formData.get(idExperienceLevel),
         }
-
+        console.log(filters);
         onFiltersChange(filters)
     }
 
+    const handleClearFilters = (event) => {
+        event.preventDefault();
+        const filters = {
+            textToFilter: '',
+            technology: [],
+            location: '',
+            experienceLevel: '',
+        }
+        onFiltersChange(filters)
+    }
     return {
-        handleSubmitChange
+        handleSubmitChange,
+        handleClearFilters,
     }
 }

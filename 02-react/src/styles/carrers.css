@@ -4,56 +4,6 @@ main > section.jobs-search {
     height: auto;
 }
 
-.search-bar {
-    background: var(--input-bg);
-    margin-bottom: 0.5rem;
-    padding: .25rem .5rem;
-    border-radius: 0.5rem;
-    height: 44px;
-    border: 0.5px solid var(--border);
-    &:focus-within {
-        outline: var(--primary-light);
-        outline-offset: 2px;
-        box-shadow: 0 0 5px 2px var(--primary-light);
-    }
-}
-
-.search-bar input {
-    background: transparent;
-    border: none;
-    width: 100%;
-    outline: none;
-    color: var(--text-primary);
-
-    &::placeholder {
-        color: var(--text-muted);
-    }
-}
-
-.search-filters {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1rem;
-    background-color: transparent;
-    box-shadow: none;
-    padding: 0;
-    margin: 1rem 0;
-}
-
-.search-filters select {
-    background: var(--input-bg);
-    border: 0.5px solid var(--border);
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    color: var(--text-primary);
-    outline: none;
-    &:focus {
-        outline: var(--primary-light);
-        outline-offset: 2px;
-        box-shadow: 0 0 5px 2px var(--primary-light);
-    }
-}
-
 main section.job-listings {
     display: flex;
     align-items: center;
