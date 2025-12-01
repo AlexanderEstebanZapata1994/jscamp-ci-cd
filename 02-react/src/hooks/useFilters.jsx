@@ -13,6 +13,7 @@ export const useFilters = () => {
     const [jobs, setJobs] = useState([]);
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         async function fetchJobs() {
@@ -29,11 +30,17 @@ export const useFilters = () => {
                 if (experienceLevel) queryparams.set('level', experienceLevel)
 
                 const response = await fetch(`https://jscamp-api.vercel.app/api/jobs?${queryparams.toString()}`)
+
+                if (!response.ok) {
+                    throw new Error(response.statusText)
+                }
                 const { data, total } = await response.json()
                 setJobs(data)
                 setTotal(total)
+                setError(null)
             } catch (error) {
                 console.error('Error fetching jobs:', error)
+                setError(error.message)
             } finally {
                 setLoading(false)
             }
@@ -69,6 +76,7 @@ export const useFilters = () => {
         experienceLevel,
         setExperienceLevel,
         loading,
+        error,
         jobs,
         total,
         totalPages,

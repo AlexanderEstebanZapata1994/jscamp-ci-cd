@@ -10,6 +10,7 @@ import Spinner from '../../components/Spinner/index.js';
 export default function Search() {
     const { 
         loading,
+        error,
         jobs,
         total,
         totalPages,
@@ -32,14 +33,14 @@ export default function Search() {
                 <SearchForm onFiltersChange={(filters)=>handleFiltersChange(filters)} />
             </section>
             <section className="job-listings">
-                { loading ? 
+                { loading && !error ? 
                     <Spinner
                         text="Retrieving jobs..."
                         width="200px"
                         height="200px"
                         animationDuration=".5s"
                         borderWidth="5px"
-                    /> : (
+                    /> : error ? <p>{error}</p> : (
                     <Joblisting 
                         jobs={jobs} 
                         totalJobsQty={total} 

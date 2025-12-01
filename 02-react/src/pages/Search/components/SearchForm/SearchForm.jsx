@@ -39,7 +39,7 @@ export function SearchForm({onFiltersChange}) {
         handleClearFilters(event);
     }
 
-    const isAnyFilterApplied = () => (textToFilter !== '' || technology.length > 0 || location !== '' || experienceLevel !== '');
+    const isAnyFilterApplied = () => (textToFilter !== '' || technology["0"] !== '' || location !== '' || experienceLevel !== '');
 
     return (
         <form onChange={handleSubmitChange} id="form-search" role="search">
@@ -59,7 +59,7 @@ export function SearchForm({onFiltersChange}) {
                 <select 
                     name={idTechnology} 
                     id={"filter-technology"} 
-                    value={technology} 
+                    value={technology[0]} 
                     onChange={(event) => setTechnology([event.target.value])}
                 >
                     <option value="">Technologies</option>
