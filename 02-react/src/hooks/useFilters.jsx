@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
+import { useLocalStorage } from "./useLocalStorage.jsx";
+
 
 const ITEMS_PER_PAGE = 4; 
 export const useFilters = () => {
-    const [currentPage, setCurrentPage] = useState(1);
-
-    const [textToFilter, setTextToFilter] = useState('');
-    const [location, setLocation] = useState('');
-    const [technology, setTechnology] = useState([]);
-    const [experienceLevel, setExperienceLevel] = useState('');
+    const [currentPage, setCurrentPage] = useLocalStorage('currentPage', 1);
+    const [textToFilter, setTextToFilter] = useLocalStorage('textToFilter', '');
+    const [location, setLocation] = useLocalStorage('location', '');
+    const [technology, setTechnology] = useLocalStorage('technology', ['']);
+    const [experienceLevel, setExperienceLevel] = useLocalStorage('experienceLevel', '');
 
     const [jobs, setJobs] = useState([]);
     const [total, setTotal] = useState(0);

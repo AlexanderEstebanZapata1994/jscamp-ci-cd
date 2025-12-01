@@ -32,7 +32,14 @@ export default function Search() {
                 <SearchForm onFiltersChange={(filters)=>handleFiltersChange(filters)} />
             </section>
             <section className="job-listings">
-                { loading ? <Spinner text="Retrieving jobs..." width="200px" height="200px" animationDuration=".5s" borderWidth="5px" /> : (
+                { loading ? 
+                    <Spinner
+                        text="Retrieving jobs..."
+                        width="200px"
+                        height="200px"
+                        animationDuration=".5s"
+                        borderWidth="5px"
+                    /> : (
                     <Joblisting 
                         jobs={jobs} 
                         totalJobsQty={total} 

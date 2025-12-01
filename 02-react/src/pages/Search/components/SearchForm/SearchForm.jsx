@@ -33,13 +33,13 @@ export function SearchForm({onFiltersChange}) {
     const handleClearFiltersInput = (event) => {
         event.preventDefault();
         setTextToFilter('');
-        setTechnology([]);
+        setTechnology(['']);
         setLocation('');
         setExperienceLevel('');
         handleClearFilters(event);
     }
 
-    const isAnyFilterApplied = () => (textToFilter !== '' || technology.length > 0 || location !== '' || experienceLevel !== '') ? true : false;
+    const isAnyFilterApplied = () => (textToFilter !== '' || technology.length > 0 || location !== '' || experienceLevel !== '');
 
     return (
         <form onChange={handleSubmitChange} id="form-search" role="search">
@@ -59,7 +59,7 @@ export function SearchForm({onFiltersChange}) {
                 <select 
                     name={idTechnology} 
                     id={"filter-technology"} 
-                    value={technology.join()} 
+                    value={technology} 
                     onChange={(event) => setTechnology([event.target.value])}
                 >
                     <option value="">Technologies</option>

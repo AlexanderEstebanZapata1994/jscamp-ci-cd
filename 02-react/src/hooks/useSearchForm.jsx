@@ -10,7 +10,7 @@ export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLev
             location: formData.get(idLocation),
             experienceLevel: formData.get(idExperienceLevel),
         }
-        console.log(filters);
+
         onFiltersChange(filters)
     }
 
