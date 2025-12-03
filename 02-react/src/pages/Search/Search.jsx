@@ -30,7 +30,7 @@ export default function Search() {
             <section className="jobs-search">
                 <h1>Find your Next Job</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
-                <SearchForm onFiltersChange={(filters)=>handleFiltersChange(filters)} />
+                <SearchForm onFiltersChange = {handleFiltersChange} />
             </section>
             <section className="job-listings">
                 { loading && !error ? 

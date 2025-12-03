@@ -1,3 +1,4 @@
+let timeoutId = null;
 export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLevel, onFiltersChange}) => {
 
     const handleSubmitChange = (event) => {
@@ -10,8 +11,12 @@ export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLev
             location: formData.get(idLocation),
             experienceLevel: formData.get(idExperienceLevel),
         }
-
-        onFiltersChange(filters)
+        if (event.target.id === idText) {
+            onTextChange(filters);
+        } else {
+            console.log('filters', filters);
+            onFiltersChange(filters);
+        }
     }
 
     const handleClearFilters = (event) => {
@@ -24,7 +29,15 @@ export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLev
         }
         onFiltersChange(filters)
     }
+
+    const onTextChange = (filters) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            onFiltersChange(filters)
+        }, 500);
+    }
     return {
+        onTextChange,
         handleSubmitChange,
         handleClearFilters,
     }
