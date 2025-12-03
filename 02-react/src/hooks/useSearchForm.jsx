@@ -1,5 +1,8 @@
-let timeoutId = null;
+import { useRef } from "react";
+
 export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLevel, onFiltersChange}) => {
+
+    const timeoutIdRef = useRef(0);
 
     const handleSubmitChange = (event) => {
         event.preventDefault();
@@ -31,8 +34,8 @@ export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLev
     }
 
     const onTextChange = (filters) => {
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
+        clearTimeout(timeoutIdRef.current);
+        timeoutIdRef.current = setTimeout(() => {
             onFiltersChange(filters)
         }, 500);
     }
