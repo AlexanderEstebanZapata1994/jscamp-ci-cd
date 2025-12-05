@@ -33,13 +33,13 @@ export function SearchForm({onFiltersChange}) {
     const handleClearFiltersInput = (event) => {
         event.preventDefault();
         setTextToFilter('');
-        setTechnology(['']);
+        setTechnology('');
         setLocation('');
         setExperienceLevel('');
         handleClearFilters(event);
     }
 
-    const isAnyFilterApplied = () => (textToFilter !== '' || technology["0"] !== '' || location !== '' || experienceLevel !== '');
+    const isAnyFilterApplied = () => (textToFilter !== '' || technology !== '' || location !== '' || experienceLevel !== '');
 
     return (
         <form onChange={handleSubmitChange} id="form-search" role="search">
@@ -49,7 +49,7 @@ export function SearchForm({onFiltersChange}) {
                     id={idText}
                     name={idText}
                     type="search"
-                    value={textToFilter}
+                    defaultValue={textToFilter}
                     onChange={(event) => setTextToFilter(event.target.value)}
                     placeholder="Search for either a job, companies or skills"
                     onFocus={handleFocusIn}
@@ -60,8 +60,8 @@ export function SearchForm({onFiltersChange}) {
                 <select 
                     name={idTechnology} 
                     id={"filter-technology"} 
-                    value={technology[0]} 
-                    onChange={(event) => setTechnology([event.target.value])}
+                    value={technology} 
+                    onChange={(event) => setTechnology(event.target.value)}
                 >
                     <option value="">Technologies</option>
                     <optgroup label="Popular Technologies">

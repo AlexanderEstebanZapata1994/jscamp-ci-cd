@@ -24,7 +24,7 @@ export default function Search() {
         } else {
             document.title = `No results found DevJobs`;
         }
-    }, [total, currentPage]) // By default [], the component will be rendered only once, but we can use useEffect to render the component again when the component is mounted
+    }, [total, currentPage]) // By default [], the component will be rendered only once, but we can use useEffect to render the component again when the component is mounted   
     return (
         <main>
             <section className="jobs-search">

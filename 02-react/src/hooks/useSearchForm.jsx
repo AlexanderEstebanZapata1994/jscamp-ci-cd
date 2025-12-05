@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { SEARCH_DEBOUNCE_TIME } from "../constants.js";
 
 export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLevel, onFiltersChange}) => {
 
@@ -10,14 +11,13 @@ export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLev
 
         const filters = {
             textToFilter: formData.get(idText),
-            technology: [formData.get(idTechnology)],
+            technology: formData.get(idTechnology),
             location: formData.get(idLocation),
             experienceLevel: formData.get(idExperienceLevel),
         }
         if (event.target.id === idText) {
             onTextChange(filters);
         } else {
-            console.log('filters', filters);
             onFiltersChange(filters);
         }
     }
@@ -26,7 +26,7 @@ export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLev
         event.preventDefault();
         const filters = {
             textToFilter: '',
-            technology: [],
+            technology: '',
             location: '',
             experienceLevel: '',
         }
@@ -37,10 +37,9 @@ export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLev
         clearTimeout(timeoutIdRef.current);
         timeoutIdRef.current = setTimeout(() => {
             onFiltersChange(filters)
-        }, 500);
+        }, SEARCH_DEBOUNCE_TIME);
     }
     return {
-        onTextChange,
         handleSubmitChange,
         handleClearFilters,
     }
