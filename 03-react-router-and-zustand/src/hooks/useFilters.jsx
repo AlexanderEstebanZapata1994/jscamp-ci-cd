@@ -69,7 +69,7 @@ export const useFilters = () => {
                 setError(null)
             } catch (error) {
                 console.error('Error fetching jobs:', error)
-                setError(error.message)
+                setError(`Error found: ${error.message}. Try again later.`)
             } finally {
                 setLoading(false)
             }

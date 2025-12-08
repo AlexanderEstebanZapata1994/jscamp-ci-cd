@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 // Putting the extension is a good practice to avoid performance issues with the browser
 import { Pagination } from '../../components/Pagination/Pagination.jsx'
 import SearchForm from './components/SearchForm/index.js'
-import { Joblisting } from './components/Joblisting.jsx'
+import JobListing from './components/JobListing/index.js'
 import { useFilters } from '../../hooks/useFilters.jsx';
 import Spinner from '../../components/Spinner/index.js';
+import styles from './Search.module.css';
 
 export default function Search() {
     const { 
@@ -27,12 +28,12 @@ export default function Search() {
     }, [total, currentPage]) // By default [], the component will be rendered only once, but we can use useEffect to render the component again when the component is mounted   
     return (
         <main>
-            <section className="jobs-search">
+            <section className={styles.jobsSearch}>
                 <h1>Find your Next Job</h1>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
                 <SearchForm onFiltersChange = {handleFiltersChange} />
             </section>
-            <section className="job-listings">
+            <section className={styles.jobListings}>
                 { loading && !error ? 
                     <Spinner
                         text="Retrieving jobs..."
@@ -40,8 +41,8 @@ export default function Search() {
                         height="200px"
                         animationDuration=".5s"
                         borderWidth="5px"
-                    /> : error ? <p>{error}</p> : (
-                    <Joblisting 
+                    /> : error ? <h3 style={{margin: "20px"}}>{error}</h3> : (
+                    <JobListing 
                         jobs={jobs} 
                         totalJobsQty={total} 
                     />
