@@ -1,49 +1,53 @@
 .jobCard {
-  display: flex;
-  position: relative;
-  margin: 5px;
-  max-width: 600px;
-  min-width: 300px;
-  padding: 1rem 2rem;
-  div {
-      h3 {
-          font-size: 1.15rem;
-          width: 70%;
-      }
-      width: 100%;
-      small {
-          color: var(--text-muted);
-      }
-      p {
-          color: var(--text-primary);
-      }
-  }
-  button {
-      position: absolute;
-      background-color: var(--primary-light);
-      color: white;
-      border: none;
-      border-radius: 0.5rem 0 0 0.5rem;
-      right: 0;
-      top: 15px;
-      width: 100px;
-      height: 30px;
-      transition: box-shadow 0.1s ease-in-out;
-      &:hover {
-          background-color: var(--primary-hover);
-          cursor: pointer;
-          box-shadow: 0 0 5px 2px var(--primary-light);
-      }
-      &.isApplied {
-          background-color: rgba(10, 112, 10, 0.973);
-          box-shadow: none;
-          outline: none;
-          outline-offset: 0;
-          cursor: not-allowed;
-      }
-  }
+    display: flex;
+    position: relative;
+    margin: 5px;
+    max-width: 600px;
+    min-width: 300px;
+    padding: 1rem 2rem;
+    div {
+        h3 {
+            font-size: 1.15rem;
+            width: 70%;
+        }
+        width: 100%;
+        small {
+            color: var(--text-muted);
+        }
+        p {
+            color: var(--text-primary);
+        }
+    }
+    button {
+        position: absolute;
+        background-color: var(--primary-light);
+        color: white;
+        border: none;
+        border-radius: 0.5rem 0 0 0.5rem;
+        right: 0;
+        top: 15px;
+        width: 100px;
+        height: 30px;
+        transition: box-shadow 0.1s ease-in-out;
+        &:hover {
+            background-color: var(--primary-hover);
+            cursor: pointer;
+            box-shadow: 0 0 5px 2px var(--primary-light);
+        }
+        &.isApplied {
+            background-color: rgba(10, 112, 10, 0.973);
+            box-shadow: none;
+            outline: none;
+            outline-offset: 0;
+            cursor: not-allowed;
+        }
+    }
 }
 
 .jobCardTitle {
-  text-decoration: none;
+    text-decoration: none;
+    color: var(--text-primary);
+    :hover {
+        color: var(--primary-light);
+    }
 }

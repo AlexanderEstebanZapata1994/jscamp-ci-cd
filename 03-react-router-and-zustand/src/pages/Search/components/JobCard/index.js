@@ -1,3 +1,3 @@
-import { JobCard } from "./Jobcard.jsx";
+import JobCard from "./JobCard.jsx";
 
 export default JobCard;

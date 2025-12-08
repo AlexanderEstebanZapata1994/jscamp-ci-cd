@@ -1,4 +1,4 @@
-import { JobCard } from '../JobCard/index.js'
+import JobCard from '../JobCard/index.js'
 import styles from './JobListing.module.css'
 
 export function JobListing({jobs, totalJobsQty}) {

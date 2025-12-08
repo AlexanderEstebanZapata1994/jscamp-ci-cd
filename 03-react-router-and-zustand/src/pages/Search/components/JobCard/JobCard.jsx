@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from "../../../../components/Link/Link.jsx"
 import styles from './JobCard.module.css'
 
-export function JobCard({job}) {
+export default function JobCard({job}) {
 
   const [isApplied, setIsApplied] = useState(false)
   const handleClickApplied = () => {
