@@ -20,6 +20,7 @@
   --shadow: rgba(0, 0, 0, 0.3);
   --input-bg: #1e293b;
   --hsla-example: hsla(210, 100%, 56%, 1);
+  --green: rgba(10, 112, 10, 0.973);
 }
 
 @font-face {

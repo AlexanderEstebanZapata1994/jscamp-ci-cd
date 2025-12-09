@@ -6,9 +6,12 @@ import NotFoundPage from './pages/404'
 import Contact from './pages/Contact'
 import { Routes, Route } from 'react-router'
 import JobDetails from './pages/Details'
+import { useEffect } from 'react'
 
 function App() {
-
+    useEffect(() => {
+        document.title = `DevJobs - Find your dream job`
+    }, []);
     return (
         <>
             <Header />

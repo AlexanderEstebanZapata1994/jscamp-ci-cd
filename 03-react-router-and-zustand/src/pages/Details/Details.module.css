@@ -1,0 +1,94 @@
+.breadcrumb {
+  display: flex;
+  width: 100%;
+  margin: 30px 50px;
+
+  .breadcrumbLink {
+    text-decoration: none;
+    color: var(--text-muted);
+    &:hover {
+      color: var(--primary-light);
+    }
+  }
+  span {
+    color: var(--text-muted);
+    font: optional;
+  }
+  p {
+      color: var(--text-primary);
+      font-weight: 500;
+  }
+}
+
+.jobDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 50px;
+  position: relative;
+}
+
+.jobDetailsHeader {
+  background-color: var(--card-bg);
+  border: none;
+  padding: 0;
+  small {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+}
+
+.jobDetailsSection {
+  background-color: var(--card-bg);
+  border: none;
+  padding: 0;
+  p > ul > li {
+      list-style: square;
+      margin-left: 20px;
+    }
+}
+
+.buttonApplyNow {
+  background-color: var(--primary-light);
+  color: var(--text-primary);
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  height: 40px;
+  border-radius: 5px;
+  transition: all 0.1s ease-in-out;
+  &:hover {
+    background-color: var(--primary-dark);
+    box-shadow: 0 0 10px 0 var(--primary-light);
+    transform: scale(1.05);
+  }
+  &:active {
+    background-color: var(--primary-dark);
+    transform: scale(0.95);
+  }
+  &:focus {
+    outline: none;
+  }
+  &:disabled {
+    background-color: var(--text-muted);
+    cursor: not-allowed;
+  }
+  &.isApplied {
+    background-color: var(--green);
+    cursor: not-allowed;
+    &:hover {
+      background-color: var();
+      box-shadow: none;
+      transform: scale(1);
+      outline: none;
+      outline-offset: 0;
+    }
+  }
+}
+
+.bottomButton {
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+}
