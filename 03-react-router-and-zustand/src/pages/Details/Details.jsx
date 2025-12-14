@@ -53,7 +53,7 @@ export const JobDetails = () => {
     if (error) return <p>{error}</p>
     if (!job) return <><p>Job not found {id}</p><Link href="/search">Go to Jobs</Link></> // TODO: Make the link to go to the search page
     return (
-        <main>
+        <main className={styles.main}>
             <article className={styles.details}>
                 <nav role="navigation" className={styles.breadcrumb}>
                     <Link className={styles.breadcrumbLink} href="/search">Jobs</Link>

@@ -1,7 +1,21 @@
+.main {
+  max-width: 70%;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+.details {
+  background-color: var(--background);
+  border: none;
+  padding: 2rem;
+  margin: 0 50px;
+  box-shadow: none;
+}
+
 .breadcrumb {
   display: flex;
   width: 100%;
-  margin: 30px 50px;
+  margin: 30px 0;
 
   .breadcrumbLink {
     text-decoration: none;
@@ -29,7 +43,6 @@
 }
 
 .jobDetailsHeader {
-  background-color: var(--card-bg);
   border: none;
   padding: 0;
   small {
@@ -39,13 +52,19 @@
 }
 
 .jobDetailsSection {
-  background-color: var(--card-bg);
   border: none;
   padding: 0;
+  max-width: 70ch;
   p > ul > li {
-      list-style: square;
-      margin-left: 20px;
-    }
+      list-style: none;
+  }
+  li::before {
+    content: '✓';
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--green);
+    margin-right: 10px;
+  }
 }
 
 .buttonApplyNow {
