@@ -197,25 +197,30 @@ form input[type="text"]::placeholder {
 }
 
 form button[type="submit"] {
-  padding: 0.50rem 1.5rem;
-  border-radius: 0.5rem;
   background-color: var(--primary-light);
-  color: white;
-  font-weight: 700;
+  color: var(--text-primary);
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s;
-  font-family: inherit;
-  font-size: 1rem;
-  white-space: nowrap;
-  height: auto;
-}
-
-form button[type="submit"]:hover,
-form button[type="submit"]:focus {
-  background-color: var(--primary-hover);
-  outline: 2px solid white;
-  outline-offset: 2px;
+  width: 100px;
+  min-width: 100px;
+  height: 30px;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 0px #1c669d;
+  transition: box-shadow 0.1s ease-in-out, transform 0.1s ease-in-out;
+  &:active {
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+  &:focus-within {
+    outline: var(--primary-light);
+    outline-offset: 2px;
+  }
+  &:disabled {
+    background-color: var(--text-muted);
+    cursor: not-allowed;
+    box-shadow: 0 4px 0 gray;
+    transform: none;
+  }
 }
 
 /* Features Section */

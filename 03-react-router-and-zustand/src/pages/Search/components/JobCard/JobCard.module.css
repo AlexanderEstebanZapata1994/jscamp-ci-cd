@@ -1,53 +1,80 @@
+.cardLink {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
 .jobCard {
     display: flex;
     position: relative;
     margin: 5px;
     max-width: 600px;
     min-width: 300px;
+    height: 100%;
     padding: 1rem 2rem;
     div {
+        flex-grow: 3;
         h3 {
             font-size: 1.15rem;
             width: 70%;
         }
-        width: 100%;
         small {
             color: var(--text-muted);
+            width: 95%;
         }
         p {
             color: var(--text-primary);
+            margin-top: 0.5rem;
+            text-justify: justify;
+            width: 95%;
         }
     }
+    &:hover {
+        background-color: #365472ab;
+    }
     button {
-        position: absolute;
         background-color: var(--primary-light);
-        color: white;
+        color: var(--text-primary);
         border: none;
-        border-radius: 0.5rem 0 0 0.5rem;
-        right: 0;
-        top: 15px;
+        cursor: pointer;
         width: 100px;
-        height: 30px;
-        transition: box-shadow 0.1s ease-in-out;
-        &:hover {
-            background-color: var(--primary-hover);
-            cursor: pointer;
-            box-shadow: 0 0 5px 2px var(--primary-light);
+        min-width: 100px;
+        height: 40px;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 0px #1c669d;
+        transition: box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out;
+        &:active {
+            box-shadow: none;
+            transform: translateY(4px);
+        }
+        &:focus-within {
+            outline: var(--primary-light);
+            outline-offset: 2px;
         }
         &.isApplied {
-            background-color: rgba(10, 112, 10, 0.973);
+            background-color: var(--green);
             box-shadow: none;
-            outline: none;
-            outline-offset: 0;
             cursor: not-allowed;
         }
     }
 }
 
-.jobCardTitle {
+
+.actions {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 20%;
+    flex-grow: 1;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.actionLink {
     text-decoration: none;
     color: var(--text-primary);
-    :hover {
+    font-size: 0.95rem;
+    font-weight: 500;
+    &:hover {
         color: var(--primary-light);
     }
 }

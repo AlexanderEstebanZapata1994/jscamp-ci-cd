@@ -53,36 +53,27 @@
   color: var(--text-primary);
   border: none;
   cursor: pointer;
-  width: 30%;
+  width: 100px;
+  min-width: 100px;
   height: 40px;
-  border-radius: 5px;
-  transition: all 0.1s ease-in-out;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 0px #1c669d;
+  transition: box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out;
   &:hover {
-    background-color: var(--primary-dark);
-    box-shadow: 0 0 10px 0 var(--primary-light);
-    transform: scale(1.05);
+    background-color: var(--primary-hover);
   }
   &:active {
-    background-color: var(--primary-dark);
-    transform: scale(0.95);
+    box-shadow: none;
+    transform: translateY(4px);
   }
-  &:focus {
-    outline: none;
-  }
-  &:disabled {
-    background-color: var(--text-muted);
-    cursor: not-allowed;
+  &:focus-within {
+    outline: var(--primary-light);
+    outline-offset: 2px;
   }
   &.isApplied {
     background-color: var(--green);
+    box-shadow: none;
     cursor: not-allowed;
-    &:hover {
-      background-color: var();
-      box-shadow: none;
-      transform: scale(1);
-      outline: none;
-      outline-offset: 0;
-    }
   }
 }
 
@@ -91,4 +82,20 @@
   align-self: flex-end;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .jobDetailsHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .buttonApplyNow {
+    width: 30%;
+  }
+
+  .bottomButton {
+    align-self: center;
+  }
 }

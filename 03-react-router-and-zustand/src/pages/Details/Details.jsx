@@ -49,9 +49,9 @@ export const JobDetails = () => {
         }
     }, [job]);
 
-    if (loading) return <Spinner message="Loading job details..." animationDuration=".5s" borderWidth="5px" height="200px" width="200px" />
+    if (loading) return <Spinner text="Loading job details..." animationDuration=".5s" borderWidth="5px" height="200px" width="200px" />
     if (error) return <p>{error}</p>
-    if (!job) return <p>Job not found</p>
+    if (!job) return <><p>Job not found {id}</p><Link href="/search">Go to Jobs</Link></> // TODO: Make the link to go to the search page
     return (
         <main>
             <article className={styles.details}>
@@ -64,7 +64,7 @@ export const JobDetails = () => {
                     <header className={styles.jobDetailsHeader}>
                         <span>
                             <h1>{job.titulo}</h1>
-                            <small>{job.empresa} - {job.ubicacion}</small>
+                            <small><span className={styles.icon}>🏢</span>{job.empresa} | <span className={styles.icon}>📍</span>{job.ubicacion}</small>
                         </span>
                         <button className={`${styles.buttonApplyNow} ${isApplied ? styles.isApplied : ''}`} onClick={handleClickApplied}>{textButton}</button>
                     </header>

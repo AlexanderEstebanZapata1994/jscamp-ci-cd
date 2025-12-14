@@ -1,8 +1,9 @@
 import { useRouter } from "../../hooks/useRouter.jsx"; 
 import BackgroundImage from '../../assets/img/background.webp'
+import { useState } from "react";
 
 export default function Home() {
-
+    const [searchText, setSearchText] = useState('');
     const { navigateTo } = useRouter();
 
     const handleSearch = (event) => {
@@ -32,12 +33,13 @@ export default function Home() {
 
                     <input 
                         name="searchText" 
-                        required 
                         type="text" 
+                        value={searchText}
                         placeholder="Search for either a job, companies or skills" 
+                        onChange={(event) => setSearchText(event.target.value)}
                     />
 
-                    <button type="submit">Search</button>
+                    <button aria-label="Search for a job, company or skill" disabled={searchText.length === 0} type="submit">Search</button>
                 </form>
             </section>
 
