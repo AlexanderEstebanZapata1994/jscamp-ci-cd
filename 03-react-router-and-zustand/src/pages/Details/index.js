@@ -1,3 +1,3 @@
-import { JobDetails } from "./Details.jsx";
+import JobDetailsPage from "./Details.jsx";
 
-export default JobDetails;
+export default JobDetailsPage;

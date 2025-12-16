@@ -6,7 +6,7 @@ import { Link } from '../../components/Link/Link.jsx';
 import styles from './Details.module.css';
 import { DetailsSection } from './DetailsSection.jsx';
 
-export const JobDetails = () => {
+export default function JobDetailsPage() {
     const { id } = useParams();
 
     const [job, setJob] = useState(null);

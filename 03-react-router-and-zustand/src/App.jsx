@@ -1,12 +1,15 @@
 import { Header } from './components/Header.jsx' // Putting the extension is a good practice to avoid performance issues with the browser
-import Home from './pages/Home'
 import { Footer } from './components/Footer.jsx'
-import Search from './pages/Search'
-import NotFoundPage from './pages/404'
-import Contact from './pages/Contact'
 import { Routes, Route } from 'react-router'
-import JobDetails from './pages/Details'
-import { useEffect } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
+import Spinner from './components/Spinner/index.js'
+
+// pages imports
+const HomePage = lazy(() => import('./pages/Home/index.js'))
+const SearchPage = lazy(() => import('./pages/Search/index.js'))
+const NotFoundPage = lazy(() => import('./pages/404/index.js'))
+const ContactPage = lazy(() => import('./pages/Contact/index.js'))
+const JobDetailsPage = lazy(() => import('./pages/Details/index.js'))
 
 function App() {
     useEffect(() => {
@@ -15,13 +18,15 @@ function App() {
     return (
         <>
             <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/jobs/:id" element={<JobDetails />} />
-                <Route path="*" element={<NotFoundPage />} />
-            </Routes>
+            <Suspense fallback={<Spinner text="Loading..." width="200px" height="200px" animationDuration=".5s" borderWidth="5px" color="red" />}>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/search" element={<SearchPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/jobs/:id" element={<JobDetailsPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+            </Suspense>
             <Footer />
         </>
     )
