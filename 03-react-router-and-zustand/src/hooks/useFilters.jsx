@@ -1,52 +1,48 @@
 import { useState, useEffect, useCallback } from "react";
-import { useLocalStorage } from "./useLocalStorage.jsx";
-import { useRouter } from "./useRouter.jsx";
+import { useSearchParams } from "react-router";
+
 import { 
     PARAMETERS, 
     ITEMS_PER_PAGE, 
     API_URL,
-    DEFAULT_PAGE,
-    LOCAL_STORAGE_KEYS
+    DEFAULT_PAGE
 } from "../constants.js";
 
 export const useFilters = () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const [currentPage, setCurrentPage] = useLocalStorage(LOCAL_STORAGE_KEYS.currentPage, () => {
-        return parseInt(urlParams.get(PARAMETERS.page) || DEFAULT_PAGE, 10);
+
+    const [searchParams, setSearchParams] = useSearchParams();
+
+    const [currentPage, setCurrentPage] = useState(() => {
+        const page = Number(searchParams.get(PARAMETERS.page) || DEFAULT_PAGE);
+        return Number.isNaN(page) ? page : DEFAULT_PAGE;
     });
-    const [textToFilter, setTextToFilter] = useLocalStorage(LOCAL_STORAGE_KEYS.textToFilter, () => {
-        return urlParams.get(PARAMETERS.textToFilter) || '';
-    });
-    const [location, setLocation] = useLocalStorage(LOCAL_STORAGE_KEYS.location, () => {
-        return urlParams.get(PARAMETERS.location) || '';
-    });
-    const [technology, setTechnology] = useLocalStorage(LOCAL_STORAGE_KEYS.technology, () => {
-        return urlParams.get(PARAMETERS.technology) || '';
-    });
-    const [experienceLevel, setExperienceLevel] = useLocalStorage(LOCAL_STORAGE_KEYS.experienceLevel, () => {
-        return urlParams.get(PARAMETERS.experienceLevel) || '';
-    });
+
+    const [textToFilter, setTextToFilter] = useState(() => searchParams.get(PARAMETERS.textToFilter) || '');
+    const [location, setLocation] = useState(() => searchParams.get(PARAMETERS.location) || '');
+    const [technology, setTechnology] = useState(() => searchParams.get(PARAMETERS.technology) || '');
+    const [experienceLevel, setExperienceLevel] = useState(() => searchParams.get(PARAMETERS.experienceLevel) || '');
 
     const [jobs, setJobs] = useState([]);
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
-    const { currentPath, navigateTo } = useRouter()
     
-    const setOrRemoveQueryParams = useCallback((key, value, urlParams) => {
-        if (value) urlParams.set(key, value)
-        else urlParams.delete(key)
+    const setOrRemoveQueryParams = useCallback((key, value, searchParams) => {
+        if (value) searchParams.set(key, value)
+        else searchParams.delete(key)
     }, [])
 
-    const getQueryParamsString = useCallback((urlParams, filters) => {
+    const setSearchingParamsToUrl = useCallback((filters) => {
+        setSearchParams(prevParams => {
+            const newParams = new URLSearchParams(prevParams)
+            setOrRemoveQueryParams(PARAMETERS.textToFilter, filters.textToFilter, newParams)
+            setOrRemoveQueryParams(PARAMETERS.location, filters.location, newParams)
+            setOrRemoveQueryParams(PARAMETERS.technology, filters.technology, newParams)
+            setOrRemoveQueryParams(PARAMETERS.experienceLevel, filters.experienceLevel, newParams)
 
-        setOrRemoveQueryParams(PARAMETERS.textToFilter, filters.textToFilter, urlParams)
-        setOrRemoveQueryParams(PARAMETERS.location, filters.location, urlParams)
-        setOrRemoveQueryParams(PARAMETERS.technology, filters.technology, urlParams)
-        setOrRemoveQueryParams(PARAMETERS.experienceLevel, filters.experienceLevel, urlParams)
-
-        return urlParams.toString()
-    }, [setOrRemoveQueryParams])
+            return newParams
+        })
+    }, [setOrRemoveQueryParams, setSearchParams])
 
     
     useEffect(() => {
@@ -57,8 +53,8 @@ export const useFilters = () => {
                 const offset = (currentPage - 1) * ITEMS_PER_PAGE;
                 const limit = ITEMS_PER_PAGE;
 
-                const queryParamsString = getQueryParamsString(new URLSearchParams({offset: offset, limit: limit}), { textToFilter, location, technology, experienceLevel })
-                const response = await fetch(`${API_URL}?${queryParamsString}`)
+                const urlString = `${API_URL}?${PARAMETERS.offset}=${offset}&${PARAMETERS.limit}=${limit}&${searchParams.toString()}`;
+                const response = await fetch(urlString)
 
                 if (!response.ok) {
                     throw new Error(response.statusText)
@@ -76,7 +72,7 @@ export const useFilters = () => {
         }
 
         fetchJobs();
-    }, [currentPage, textToFilter, location, technology, experienceLevel, getQueryParamsString])
+    }, [currentPage, searchParams, setSearchingParamsToUrl])
 
     useEffect(() => {
         setCurrentPage(1)
@@ -84,26 +80,18 @@ export const useFilters = () => {
 
 
     useEffect(() => {
-        const queryParamsString = getQueryParamsString(new URLSearchParams(window.location.search), {textToFilter, location, technology, experienceLevel})
-        
-        const basePath = currentPath;
-        const newUrl = queryParamsString ? `${basePath}?${queryParamsString}` : basePath;
-        navigateTo(newUrl);
-
-    }, [textToFilter, location, technology, experienceLevel, currentPage, currentPath, navigateTo, getQueryParamsString]);
-
+    }, [textToFilter, location, technology, experienceLevel, setSearchingParamsToUrl]);
+    
     const handlePageChange = (page) => {
         setCurrentPage(page)
     }
-
+    
     const handleFiltersChange = (filters) => {
         setTextToFilter(filters.textToFilter)
         setLocation(filters.location)
         setTechnology(filters.technology)
         setExperienceLevel(filters.experienceLevel)
-
-        const queryParamsString = getQueryParamsString(new URLSearchParams(window.location.search), filters)
-        navigateTo(`${currentPath}?${queryParamsString}`)
+        setSearchingParamsToUrl(filters)
     }
     const totalPages = Math.ceil(total / ITEMS_PER_PAGE)
 

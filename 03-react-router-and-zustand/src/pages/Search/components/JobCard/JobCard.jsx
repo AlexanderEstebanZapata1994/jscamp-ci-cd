@@ -11,17 +11,17 @@ export default function JobCard({job}) {
   }
   const buttonText = isApplied ? 'Applied' : 'Apply Now'
   return (
-    <Link 
-      href={`/jobs/${job.id}`} 
-      className={styles.cardLink} 
-      aria-label={`View job details for ${job.titulo} by ${job.empresa}`}
-    >
       <article 
         className={styles.jobCard} 
         aria-label={`Job card for ${job.titulo} by ${job.empresa}`}
+        data-modalidad={job.modalidad}
+        data-nivel={job.nivel}
+        data-technology={job.technology}
       >
         <div className={styles.jobCardContent}>
-          <h3>{job.titulo}</h3>
+          <h3>
+            <Link to={`/jobs/${job.id}`} className={styles.jobTitle} aria-label={`View job details for ${job.titulo} by ${job.empresa}`}>{job.titulo}</Link>
+          </h3>
           <small><span className={styles.icon}>🏢</span>{job.empresa} | <span className={styles.icon}>📍</span>{job.ubicacion}</small>
           <p>{job.descripcion}</p>
         </div>
@@ -32,6 +32,5 @@ export default function JobCard({job}) {
           </button>
         </div>
       </article>
-    </Link>
   )
 }
