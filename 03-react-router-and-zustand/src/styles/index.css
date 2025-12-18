@@ -307,3 +307,10 @@ footer {
       font-size: 0.875rem;
   }
 }
+
+.nav-link-active {
+  text-decoration: underline;
+  background-color: var(--primary-light);
+  pointer-events: none;
+  user-select: none;
+}

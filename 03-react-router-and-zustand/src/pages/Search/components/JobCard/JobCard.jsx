@@ -20,16 +20,16 @@ export default function JobCard({job}) {
       >
         <div className={styles.jobCardContent}>
           <h3>
-            <Link to={`/jobs/${job.id}`} className={styles.jobTitle} aria-label={`View job details for ${job.titulo} by ${job.empresa}`}>{job.titulo}</Link>
+            <Link href={`/jobs/${job.id}`} className={styles.jobTitle} aria-label={`View job details for ${job.titulo} by ${job.empresa}`}>{job.titulo}</Link>
           </h3>
           <small><span className={styles.icon}>🏢</span>{job.empresa} | <span className={styles.icon}>📍</span>{job.ubicacion}</small>
           <p>{job.descripcion}</p>
         </div>
         <div className={styles.actions}>
-          <Link href={`/jobs/${job.id}`} className={styles.actionLink}>Ver detalles</Link>
           <button className={`${isApplied ? styles.isApplied : ''}`} onClick={e => handleClickApplied(e)}>
             {buttonText}
           </button>
+          <Link href={`/jobs/${job.id}`} className={styles.actionLink}>Ver detalles</Link>
         </div>
       </article>
   )
