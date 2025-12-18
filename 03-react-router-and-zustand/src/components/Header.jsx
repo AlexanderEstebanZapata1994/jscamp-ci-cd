@@ -1,6 +1,11 @@
 import { Link } from './Link/Link.jsx'
 import { NavLink } from 'react-router'
+import { useAuth } from '../hooks/useAuth.jsx';
+
 export function Header() {
+
+    const { isLoggedIn, login, logout } = useAuth()
+
     return (
         <header>
             <Link href="/" style={{textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
@@ -13,6 +18,11 @@ export function Header() {
             <div>
                 <NavLink to="/search" className={({isActive}) => isActive ? 'nav-link-active' : ''}>Jobs</NavLink>
                 <NavLink to="/contact" className={({isActive}) => isActive ? 'nav-link-active' : ''}>Contact</NavLink>
+            {
+                isLoggedIn 
+                ? <button onClick={logout}>Logout</button>
+                : <button onClick={login}>Login</button>
+            }
             </div>
         </header>
     )

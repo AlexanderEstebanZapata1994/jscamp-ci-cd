@@ -94,6 +94,12 @@
     box-shadow: none;
     cursor: not-allowed;
   }
+  &:disabled {
+    background-color: var(--text-muted);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+  }
 }
 
 .bottomButton {

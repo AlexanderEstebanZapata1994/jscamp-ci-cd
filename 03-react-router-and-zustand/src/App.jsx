@@ -12,6 +12,7 @@ const ContactPage = lazy(() => import('./pages/Contact/index.js'))
 const JobDetailsPage = lazy(() => import('./pages/Details/index.js'))
 
 function App() {
+
     useEffect(() => {
         document.title = `DevJobs - Find your dream job`
     }, []);

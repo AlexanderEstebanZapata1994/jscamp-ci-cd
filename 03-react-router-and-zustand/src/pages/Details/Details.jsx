@@ -5,8 +5,11 @@ import Spinner from '../../components/Spinner';
 import { Link } from '../../components/Link/Link.jsx';
 import styles from './Details.module.css';
 import { DetailsSection } from './DetailsSection.jsx';
+import { useAuth } from '../../hooks/useAuth.jsx';
 
 export default function JobDetailsPage() {
+
+    const { isLoggedIn } = useAuth()
     const { id } = useParams();
 
     const [job, setJob] = useState(null);
@@ -14,10 +17,11 @@ export default function JobDetailsPage() {
     const [error, setError] = useState(null);
     const [isApplied, setIsApplied] = useState(false);
 
-    const textButton = isApplied ? 'Applied' : 'Apply Now';
     const handleClickApplied = () => {
         setIsApplied(true)
     }
+
+    const textButton = !isLoggedIn ? 'Login to apply' : (isApplied ? 'Applied' : 'Apply Now');
 
     useEffect(() => {
         async function fetchJob() {
@@ -66,13 +70,23 @@ export default function JobDetailsPage() {
                             <h1>{job.titulo}</h1>
                             <small><span className={styles.icon}>🏢</span>{job.empresa} | <span className={styles.icon}>📍</span>{job.ubicacion}</small>
                         </span>
-                        <button className={`${styles.buttonApplyNow} ${isApplied ? styles.isApplied : ''}`} onClick={handleClickApplied}>{textButton}</button>
+                        <button 
+                            disabled={!isLoggedIn} 
+                            className={`${styles.buttonApplyNow} ${isApplied ? styles.isApplied : ''}`} 
+                            onClick={handleClickApplied}>
+                                {textButton}
+                        </button>
                     </header>
                     <DetailsSection title="Job Description" description={job.descripcion} formatContent={false}/>
                     <DetailsSection title="Responsibilities" description={job.content.responsibilities} formatContent={true} />
                     <DetailsSection title="Requirements" description={job.content.requirements} formatContent={true} />
                     <DetailsSection title="About the company" description={job.content.about} formatContent={false} />
-                    <button className={`${styles.buttonApplyNow} ${isApplied ? styles.isApplied : ''} ${styles.bottomButton}`} onClick={handleClickApplied}>{textButton}</button>
+                    <button 
+                        disabled={!isLoggedIn} 
+                        className={`${styles.buttonApplyNow} ${isApplied ? styles.isApplied : ''} ${styles.bottomButton}`} 
+                        onClick={handleClickApplied}>
+                            {textButton}
+                    </button>
                 </section>
             </article>
         </main>
