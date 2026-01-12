@@ -5,11 +5,11 @@ import Spinner from '../../components/Spinner';
 import { Link } from '../../components/Link/Link.jsx';
 import styles from './Details.module.css';
 import { DetailsSection } from './DetailsSection.jsx';
-import { useAuth } from '../../hooks/useAuth.jsx';
+import { useAuthStore } from '../../store/useAuthStore.jsx';
 
 export default function JobDetailsPage() {
 
-    const { isLoggedIn } = useAuth()
+    const { isLoggedIn } = useAuthStore()
     const { id } = useParams();
 
     const [job, setJob] = useState(null);

@@ -1,10 +1,10 @@
 import { Link } from './Link/Link.jsx'
 import { NavLink } from 'react-router'
-import { useAuth } from '../hooks/useAuth.jsx';
+import { useAuthStore } from '../store/useAuthStore.jsx';
 
 export function Header() {
 
-    const { isLoggedIn, login, logout } = useAuth()
+    const { isLoggedIn, login, logout } = useAuthStore()
 
     return (
         <header>
