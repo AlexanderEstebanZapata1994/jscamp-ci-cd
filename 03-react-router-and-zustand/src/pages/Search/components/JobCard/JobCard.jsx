@@ -1,7 +1,17 @@
 import { useState } from "react"
 import { Link } from "../../../../components/Link/Link.jsx"
 import styles from './JobCard.module.css'
+import { useFavoritesStore } from "../../../../store/useFavoritesStore.jsx"
+import { FavoriteButton } from "../../../../components/FavoriteButton/FavoriteButton.jsx"
 
+
+function ActionButton({ children, handleClick, style}) {
+  return (
+    <button className={style} onClick={ handleClick }>
+      { children }
+    </button>
+  )
+}
 export default function JobCard({job}) {
 
   const [isApplied, setIsApplied] = useState(false)
@@ -26,10 +36,11 @@ export default function JobCard({job}) {
           <p>{job.descripcion}</p>
         </div>
         <div className={styles.actions}>
-          <button className={`${isApplied ? styles.isApplied : ''}`} onClick={e => handleClickApplied(e)}>
+          <button className={`${styles.applyNowButton} ${isApplied ? styles.isApplied : ''}`} onClick={e => handleClickApplied(e)}>
             {buttonText}
           </button>
           <Link href={`/jobs/${job.id}`} className={styles.actionLink}>Ver detalles</Link>
+          <FavoriteButton jobId={job.id} />
         </div>
       </article>
   )

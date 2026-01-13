@@ -6,6 +6,7 @@ import { Link } from '../../components/Link/Link.jsx';
 import styles from './Details.module.css';
 import { DetailsSection } from './DetailsSection.jsx';
 import { useAuthStore } from '../../store/useAuthStore.jsx';
+import { FavoriteButton } from '../../components/FavoriteButton/FavoriteButton.jsx';
 
 export default function JobDetailsPage() {
 
@@ -70,6 +71,7 @@ export default function JobDetailsPage() {
                             <h1>{job.titulo}</h1>
                             <small><span className={styles.icon}>🏢</span>{job.empresa} | <span className={styles.icon}>📍</span>{job.ubicacion}</small>
                         </span>
+                        <FavoriteButton jobId={job.id} />
                         <button 
                             disabled={!isLoggedIn} 
                             className={`${styles.buttonApplyNow} ${isApplied ? styles.isApplied : ''}`} 
