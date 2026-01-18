@@ -30,7 +30,7 @@ export function Header() {
                 <NavLink to="/contact" className={({isActive}) => isActive ? 'nav-link-active' : ''}>Contact</NavLink>
                 {
                     isLoggedIn && (
-                        <NavLink to="/favorites" className={(isActive) => isActive ? 'nav-link-active' : ''}>Profile (❤️{numberOfFavorites})</NavLink>
+                        <NavLink to="/profile" className={({isActive}) => isActive ? 'nav-link-active' : ''}>Profile (❤️{numberOfFavorites})</NavLink>
                     )
                 }
             {

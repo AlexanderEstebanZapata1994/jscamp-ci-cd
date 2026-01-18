@@ -3,6 +3,7 @@ import { Footer } from './components/Footer.jsx'
 import { Routes, Route } from 'react-router'
 import { useEffect, lazy, Suspense } from 'react'
 import Spinner from './components/Spinner/index.js'
+import { ProtectedRoute } from './components/ProtectedRoute.jsx'
 
 // pages imports
 const HomePage = lazy(() => import('./pages/Home/index.js'))
@@ -10,6 +11,9 @@ const SearchPage = lazy(() => import('./pages/Search/index.js'))
 const NotFoundPage = lazy(() => import('./pages/404/index.js'))
 const ContactPage = lazy(() => import('./pages/Contact/index.js'))
 const JobDetailsPage = lazy(() => import('./pages/Details/index.js'))
+const ProfilePage = lazy(() => import('./pages/Profile/index.js'))
+const LoginPage = lazy(() => import('./pages/Login/index.js'))
+const RegisterPage = lazy(() => import('./pages/Register/index.js'))
 
 function App() {
 
@@ -24,7 +28,10 @@ function App() {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/search" element={<SearchPage />} />
                     <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
                     <Route path="/jobs/:id" element={<JobDetailsPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </Suspense>

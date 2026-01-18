@@ -1,5 +1,5 @@
 .main {
-  max-width: 70%;
+  max-width: 90%;
   margin: 0 auto;
   line-height: 1.7;
   font-size: 1.1rem;
@@ -7,8 +7,6 @@
 .details {
   background-color: var(--background);
   border: none;
-  padding: 2rem;
-  margin: 0 50px;
   box-shadow: none;
 }
 
@@ -38,7 +36,6 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin: 0 50px;
   position: relative;
 }
 
