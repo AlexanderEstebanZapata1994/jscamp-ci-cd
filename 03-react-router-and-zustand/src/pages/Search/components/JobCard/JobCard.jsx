@@ -1,25 +1,9 @@
-import { useState } from "react"
 import { Link } from "../../../../components/Link/Link.jsx"
 import styles from './JobCard.module.css'
-import { useFavoritesStore } from "../../../../store/useFavoritesStore.jsx"
-import { FavoriteButton } from "../../../../components/FavoriteButton/FavoriteButton.jsx"
-
-
-function ActionButton({ children, handleClick, style}) {
-  return (
-    <button className={style} onClick={ handleClick }>
-      { children }
-    </button>
-  )
-}
+import { FavoriteButton } from "./components/FavoriteButton/FavoriteButton.jsx"
+import { ApplyJobButton } from "./components/ApplyJobButton/ApplyJobButton.jsx"
 export default function JobCard({job}) {
 
-  const [isApplied, setIsApplied] = useState(false)
-  const handleClickApplied = (e) => {
-    e.stopPropagation()
-    setIsApplied(true)
-  }
-  const buttonText = isApplied ? 'Applied' : 'Apply Now'
   return (
       <article 
         className={styles.jobCard} 
@@ -36,9 +20,7 @@ export default function JobCard({job}) {
           <p>{job.descripcion}</p>
         </div>
         <div className={styles.actions}>
-          <button className={`${styles.applyNowButton} ${isApplied ? styles.isApplied : ''}`} onClick={e => handleClickApplied(e)}>
-            {buttonText}
-          </button>
+          <ApplyJobButton jobId={job.id}/>
           <Link href={`/jobs/${job.id}`} className={styles.actionLink}>Ver detalles</Link>
           <FavoriteButton jobId={job.id} />
         </div>

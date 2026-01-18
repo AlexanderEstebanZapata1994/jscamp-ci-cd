@@ -7,9 +7,14 @@ export function Header() {
 
     const { isLoggedIn, login, logout } = useAuthStore()
 
-    const { countFavorites } = useFavoritesStore()
+    const { countFavorites, clearFavorites } = useFavoritesStore()
 
     const numberOfFavorites = countFavorites()
+
+    const handleLogout = () => {
+        logout()
+        clearFavorites()
+    }
 
     return (
         <header>
@@ -30,7 +35,7 @@ export function Header() {
                 }
             {
                 isLoggedIn 
-                ? <button onClick={logout}>Logout</button>
+                ? <button onClick={handleLogout}>Logout</button>
                 : <button onClick={login}>Login</button>
             }
             </div>

@@ -6,7 +6,8 @@ import { Link } from '../../components/Link/Link.jsx';
 import styles from './Details.module.css';
 import { DetailsSection } from './DetailsSection.jsx';
 import { useAuthStore } from '../../store/useAuthStore.jsx';
-import { FavoriteButton } from '../../components/FavoriteButton/FavoriteButton.jsx';
+import { FavoriteButton } from '../Search/components/JobCard/components/FavoriteButton/FavoriteButton.jsx';
+import { ApplyJobButton } from '../Search/components/JobCard/components/ApplyJobButton/ApplyJobButton.jsx';
 
 export default function JobDetailsPage() {
 
@@ -16,13 +17,6 @@ export default function JobDetailsPage() {
     const [job, setJob] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [isApplied, setIsApplied] = useState(false);
-
-    const handleClickApplied = () => {
-        setIsApplied(true)
-    }
-
-    const textButton = !isLoggedIn ? 'Login to apply' : (isApplied ? 'Applied' : 'Apply Now');
 
     useEffect(() => {
         async function fetchJob() {
@@ -72,23 +66,13 @@ export default function JobDetailsPage() {
                             <small><span className={styles.icon}>🏢</span>{job.empresa} | <span className={styles.icon}>📍</span>{job.ubicacion}</small>
                         </span>
                         <FavoriteButton jobId={job.id} />
-                        <button 
-                            disabled={!isLoggedIn} 
-                            className={`${styles.buttonApplyNow} ${isApplied ? styles.isApplied : ''}`} 
-                            onClick={handleClickApplied}>
-                                {textButton}
-                        </button>
+                        <ApplyJobButton jobId={job.id} />
                     </header>
                     <DetailsSection title="Job Description" description={job.descripcion} formatContent={false}/>
                     <DetailsSection title="Responsibilities" description={job.content.responsibilities} formatContent={true} />
                     <DetailsSection title="Requirements" description={job.content.requirements} formatContent={true} />
                     <DetailsSection title="About the company" description={job.content.about} formatContent={false} />
-                    <button 
-                        disabled={!isLoggedIn} 
-                        className={`${styles.buttonApplyNow} ${isApplied ? styles.isApplied : ''} ${styles.bottomButton}`} 
-                        onClick={handleClickApplied}>
-                            {textButton}
-                    </button>
+                    <ApplyJobButton jobId={job.id} />
                 </section>
             </article>
         </main>
