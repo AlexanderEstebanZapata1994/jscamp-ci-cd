@@ -9,7 +9,8 @@ export const PARAMETERS = {
 
 export const ITEMS_PER_PAGE = 4;
 
-export const API_URL = "https://jscamp-api.vercel.app/api/jobs";
+// export const API_URL = "https://jscamp-api.vercel.app/api/jobs";
+export const API_URL = "http://localhost:3000/jobs";
 
 export const DEFAULT_PAGE = 1;
 

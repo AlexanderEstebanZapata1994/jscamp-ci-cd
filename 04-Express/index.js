@@ -1,5 +1,6 @@
 import express from 'express';
 import crypto from 'node:crypto';
+import cors from 'cors';
 import { DEFAULTS } from './config.js';
 import { filterJobs, createJob, updateJob, deleteJob } from './processData.js';
 import jobs from './data/jobs.json' with { type: 'json' }
@@ -8,10 +9,21 @@ process.loadEnvFile();
 const PORT = process.env.PORT ?? 2000;
 const app = express();
 
+const whitelist = ['http://localhost:5173'];
 
-app.get('/jobs', async(req, res) =>{
+app.use(express.json());
+app.use(cors({
+    origin: (origin, callback) => {
+        if (whitelist.indexOf(origin) !== -1) {
+            return callback(null, origin)
+        }
+        return callback(new Error('Not allowed by CORS'))
+    }
+}));
+
+app.get('/jobs', async(req, res) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:5173");
     const { title, text, technology, location, level, limit = DEFAULTS.LIMIT, offset = DEFAULTS.OFFSET } = req.query;
-    const { default: jobs} = await import('./data/jobs.json', { with: { type: 'json' } });
     const limitNumber = Number(limit);
     const offsetNumber = Number(offset);
 
@@ -20,7 +32,7 @@ app.get('/jobs', async(req, res) =>{
     jobsFiltered = filterJobs(jobsFiltered, title, text, technology, location, level);
 
     const jobsPaginated = jobsFiltered.slice(offsetNumber, offsetNumber + limitNumber);
-    return res.status(200).json({jobs: jobsPaginated})
+    return res.status(200).json({data: jobsPaginated, total: jobsFiltered.length, limit: limitNumber, offset: offsetNumber, results: jobsPaginated.length})
 })
 
 app.get('/jobs/:id', async (req, res) => {
