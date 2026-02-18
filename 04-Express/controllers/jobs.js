@@ -4,7 +4,6 @@ import { JobModel } from '../models/job.js';
 export class JobController {
 
     static async getAll(req, res) {
-        res.header("Access-Control-Allow-Origin", "http://localhost:5173");
         const { jobs, total, limit, offset, results } = await JobModel.getAll(req.query);
         return res.status(200).json({data: jobs, total, limit, offset, results})
     }
@@ -73,7 +72,7 @@ export class JobController {
             return res.status(404).json({ error: 'Job not found' })
         }
     
-        deleteJob(jobs, id)
+        deleteJob(job, id)
         return res.status(204).send()
     }
 }

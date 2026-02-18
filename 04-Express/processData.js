@@ -3,33 +3,33 @@ export const filterJobs = (jobs, title, text, technology, location, level) => {
 
     if (title) {
         jobsFiltered = jobsFiltered.filter((job) => {
-            return job.title.toLowerCase().includes(title.toLowerCase())
+            return job.titulo.toLowerCase().includes(title.toLowerCase())
         })
     }
 
     if (text) {
         jobsFiltered = jobsFiltered.filter((job) => {
             const searchValue = text.toLocaleLowerCase().trim();
-            return job.title.toLowerCase().includes(searchValue) 
-                || job.description.toLowerCase().includes(searchValue)
+            return job.titulo.toLowerCase().includes(searchValue) 
+                || job.descripcion.toLowerCase().includes(searchValue)
         })
     }
 
     if (technology) {
         jobsFiltered = jobsFiltered.filter((job) => {
-            return job.data.technologies.includes(technology)
+            return job.data.technology.includes(technology)
         })
     }
 
     if (location) {
         jobsFiltered = jobsFiltered.filter((job) => {
-            return job.data.location.toLowerCase().includes(location.toLowerCase())
+            return job.data.modalidad.toLowerCase().includes(location.toLowerCase())
         })
     }
 
     if (level) {
         jobsFiltered = jobsFiltered.filter((job) => {
-            return job.data.level.toLowerCase().includes(level.toLowerCase())
+            return job.data.nivel.toLowerCase().includes(level.toLowerCase())
         })
     }
 

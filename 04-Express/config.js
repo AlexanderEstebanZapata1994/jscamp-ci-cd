@@ -1,5 +1,5 @@
 export const DEFAULTS = {
     PORT: 3000,
-    LIMIT: 10,
+    LIMIT: 1,
     OFFSET: 0
 }
