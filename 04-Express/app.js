@@ -1,7 +1,7 @@
 import express from 'express';
 import jobsRouter from './routes/jobs.js';
 import { corsMiddleware } from './middlewares/cors.js';
-import { DEFAULTS } from './config.js';
+import { DEFAULTS } from './test/config.js';
 
 const PORT = process.env.PORT ?? DEFAULTS.PORT;
 export const app = express();

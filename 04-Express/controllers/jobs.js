@@ -1,5 +1,6 @@
 
 import { JobModel } from '../models/job.js';
+import { validateJob, validatePartialJob } from '../schemas/jobs.js';
 
 export class JobController {
 
@@ -20,11 +21,11 @@ export class JobController {
     }
 
     static async create (req, res) {
-        const { title, company, location, data } = req.body;
-        if (!title || !company || !location || !data) {
-            return res.status(400).json({ error: 'Missing required fields' })
+        const result = validateJob(req.body);
+        if (!result.success) {
+            return res.status(400).json({ message: 'Data is invalid', errors: result.error.errors.map(error => error.message)})
         }
-        const newJob = await JobModel.create({ title, company, location, data });
+        const newJob = await JobModel.create(result.data);
         return res.status(201).json({ job: newJob })
     }
 

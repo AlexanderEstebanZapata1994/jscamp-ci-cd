@@ -1,7 +1,7 @@
 import jobs from '../data/jobs.json' with { type: 'json' }
 import crypto from 'node:crypto';
-import { filterJobs, createJob, updateJob, deleteJob } from '../processData.js';
-import { DEFAULTS } from '../config.js';
+import { filterJobs, createJob, updateJob, deleteJob } from '../filtering-data.js';
+import { DEFAULTS } from '../test/config.js';
 
 export class JobModel {
     static async getAll({ title, text, technology, location, level, limit = DEFAULTS.LIMIT, offset = DEFAULTS.OFFSET }) {
