@@ -33,7 +33,7 @@ export default function Home() {
 
                     <input 
                         name="searchText" 
-                        type="text" 
+                        type="search" 
                         value={searchText}
                         placeholder="Search for either a job, companies or skills" 
                         onChange={(event) => setSearchText(event.target.value)}

@@ -181,7 +181,7 @@ form span {
   flex-shrink: 0;
 }
 
-form input[type="text"] {
+form input[type="search"] {
   flex: 1;
   background: transparent;
   border: none;

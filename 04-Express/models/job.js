@@ -21,9 +21,11 @@ export class JobModel {
         return job;
     }
 
-    static async create({ title, company, location, data }) {
-        const newJob = { id: crypto.randomUUID(), title, company, location, data }
+    static async create({ titulo, empresa, ubicacion, descripcion, data, content }) {
+        const newJob = { id: crypto.randomUUID(), titulo, empresa, ubicacion, descripcion, data, content }
         createJob(jobs, newJob)
         return newJob;
     }
+
+    //update
 }

@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { JobController } from '../controllers/jobs.js';
+import { validateJob, validatePartialJob } from '../schemas/jobs.js';
 
 const jobsRouter = Router();
 

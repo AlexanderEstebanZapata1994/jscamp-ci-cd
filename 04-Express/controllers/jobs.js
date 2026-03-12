@@ -1,6 +1,5 @@
 
 import { JobModel } from '../models/job.js';
-import { validateJob, validatePartialJob } from '../schemas/jobs.js';
 
 export class JobController {
 
@@ -21,11 +20,7 @@ export class JobController {
     }
 
     static async create (req, res) {
-        const result = validateJob(req.body);
-        if (!result.success) {
-            return res.status(400).json({ message: 'Data is invalid', errors: result.error.errors.map(error => error.message)})
-        }
-        const newJob = await JobModel.create(result.data);
+        const newJob = await JobModel.create(req.body);
         return res.status(201).json({ job: newJob })
     }
 
@@ -37,14 +32,14 @@ export class JobController {
             return res.status(400).json({ error: 'Title is required' })
         }
         
-        const job = jobs.find(job => job.id === id);
+        const job = jobmodel.getById({ id });
     
         if (!job) {
-            return res.status(404).json({ error: 'Job not found' })
+            return res.status(404).json({ error: 'Job not found' });
         }
     
-        const jobUpdated = updateJob(jobs, { id, title })
-        return res.status(200).json({ job: jobUpdated })
+        const jobUpdated = await JobModel.update(id, req.body);
+        return res.status(200).json({ job: jobUpdated });
     }
 
     static async partialUpdate(req, res) {
