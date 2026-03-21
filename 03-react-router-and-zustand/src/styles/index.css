@@ -20,7 +20,11 @@
   --shadow: rgba(0, 0, 0, 0.3);
   --input-bg: #1e293b;
   --hsla-example: hsla(210, 100%, 56%, 1);
-  --green: rgba(10, 112, 10, 0.973);
+  --green: rgb(10, 112, 10);
+  --danger: rgb(255, 107, 107);
+  --warning: rgb(255, 217, 0);
+  --info: rgb(102, 102, 255 );
+  --success: rgba(13, 234, 13, 0.506);
 }
 
 @font-face {
@@ -52,69 +56,9 @@ h1 {
   text-wrap: balance;
 }
 
-h1+p {
+h1 + p {
   text-wrap: balance;
   margin-bottom: 2rem
-}
-
-/* Header */
-header {
-  border-bottom: 1px solid var(--border);
-  background: var(--background);
-  padding: .5rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-
-  h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-primary);
-  }
-  div {
-      display: inline-flex;
-      gap: 0.5rem;
-  }
-}
-
-header svg {
-  width: 44px;
-  height: 44px;
-  color: var(--primary-light);
-}
-
-/* Navegación del header a otras páginas */
-nav {
-  align-items: center;
-  gap: 1rem;
-  display: flex;
-
-  a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      transition: color 0.2s;
-      font-weight: 500;
-
-      &:hover,
-      &:focus {
-          color: var(--primary);
-          outline: none;
-      }
-  }
-}
-
-/* Botones del Header */
-header div a {
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background-color: #334155;
-  color: var(--text-primary);
-  display: inline-block;
-  font-size: 0.875rem;
-  font-weight: 700;
-  text-decoration: none;
-  /* TODO */
 }
 
 /* Hero */
@@ -144,13 +88,13 @@ main>section:nth-child(1) {
 
 /* Formulario de Búsqueda */
 form {
-  max-width: 42rem;
-  width: 100%;
+  max-width: 40rem;
+  width: 95%;
   margin: 0 auto;
   padding-inline: 1rem;
 }
 
-form>div {
+form > div {
   display: flex;
   align-items: center;
   background-color: var(--input-bg);
@@ -308,9 +252,4 @@ footer {
   }
 }
 
-.nav-link-active {
-  text-decoration: underline;
-  background-color: var(--primary-light);
-  pointer-events: none;
-  user-select: none;
-}
+

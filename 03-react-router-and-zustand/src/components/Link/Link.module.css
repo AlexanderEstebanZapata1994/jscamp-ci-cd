@@ -1,0 +1,10 @@
+.navLinkActive {
+    color: var(--primary-light);
+    pointer-events: none;
+    user-select: none;
+}
+
+.link {
+    display: flex;
+    gap: 0.5rem;
+}

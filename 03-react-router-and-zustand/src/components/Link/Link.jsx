@@ -1,13 +1,16 @@
-import { Link as NavLink } from 'react-router'
+import { NavLink } from 'react-router'
+import styles from './Link.module.css'
 
-export const Link = ({href, children, className, ...otherProps}) => {
+export const Link = ({href, children, className, icon = null, ...otherProps}) => {
     
+  const classes = `${className} ${styles.link}`;
 
   return (
     <NavLink 
       to={href} {...otherProps} 
-      className={className}
+      className={({isActive}) => isActive ? `${styles.navLinkActive} ${classes}` : classes}
     >
+      {icon && <span className="material-symbols-outlined">{icon}</span>}
       {children}
     </NavLink>
   )
