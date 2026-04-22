@@ -47,9 +47,9 @@ export function Header() {
                 }
             </div>
 
-            <aside>
+            <aside className={styles.sidebar}>
                 <Button icon="menu" type="transparent" onClick={handleToggleSideBar}></Button>
-                <nav className={isSideBarOpen ? styles.open : styles.closed}>
+                <nav className={`${styles.navigation} ${isSideBarOpen ? styles.open : styles.closed}`}>
                     <Button icon="close" type="transparent" className={styles.buttonClose} onClick={handleToggleSideBar} title="Close Sidebar"></Button>
                     <Link href="/search" icon="work">Jobs</Link>
                     <Link href="/contact" icon="contact_mail">Contact</Link>

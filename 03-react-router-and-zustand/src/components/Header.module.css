@@ -47,12 +47,12 @@ header div a {
     text-decoration: none;
 }
 
-.open {
+.sidebar .open {
     right: 0;
     animation: slideIn 0.3s ease-in-out forwards;
 }
 
-.closed {
+.sidebar .closed {
     right: -250px;
     animation: slideOut 0.3s ease-in-out forwards;
 }
@@ -69,7 +69,7 @@ header div a {
     cursor: pointer;
 }
 
-aside nav {
+.sidebar nav {
     width: 250px;
     height: 100vh;
     position: fixed;
@@ -98,13 +98,13 @@ aside nav {
         display: none;
     }
 
-    header aside {
+    .sidebar {
         right: 0;
     }
 }
 
 @media (min-width: 735px) {
-    header aside {
+    .sidebar {
         display: none;
     }
 }
