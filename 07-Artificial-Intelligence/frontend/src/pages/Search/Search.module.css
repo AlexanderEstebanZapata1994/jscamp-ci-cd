@@ -1,0 +1,15 @@
+.jobsSearch {
+  margin: 0;
+  padding: 0;
+  height: auto;
+}
+
+.jobListings {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  gap: 1rem;
+}

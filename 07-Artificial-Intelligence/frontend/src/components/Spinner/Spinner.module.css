@@ -1,0 +1,44 @@
+.fullScreen {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinnerInner {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: var(--width, 200px);
+    height: var(--height, 200px);
+}
+
+.spinnerInner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: var(--border-width, 10px) solid var(--primary-light);
+    border-top: var(--border-width, 10px) solid var(--primary-dark);
+    border-radius: 50%;
+    animation: spin var(--animation-duration, 1s) linear infinite;
+}
+
+.spinnerText {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

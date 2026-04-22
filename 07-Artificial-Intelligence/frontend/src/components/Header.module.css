@@ -1,0 +1,110 @@
+header {
+    border-bottom: 1px solid var(--border);
+    background: var(--background);
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    h2 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+    }
+
+    div {
+        display: inline-flex;
+        gap: 0.5rem;
+    }
+}
+
+header svg {
+    width: 44px;
+    height: 44px;
+    color: var(--primary-light);
+}
+
+.logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    h1 {
+        color: var(--text-primary);
+    }
+}
+
+/* Botones del Header */
+header div a {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: #334155;
+    color: var(--text-primary);
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.sidebar .open {
+    right: 0;
+    animation: slideIn 0.3s ease-in-out forwards;
+}
+
+.sidebar .closed {
+    right: -250px;
+    animation: slideOut 0.3s ease-in-out forwards;
+}
+
+.buttonClose {
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.sidebar nav {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -250px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--background);
+    box-shadow: 0 0 10px 0 var(--shadow);
+    border-left: 1px solid var(--border);
+    padding: 1rem;
+    z-index: 1;
+    a {
+        text-decoration: none;
+        color: var(--text-secondary);
+        transition: color 0.2s;
+        font-weight: 500;
+    }
+}
+
+
+
+@media (max-width: 735px) {
+    header div {
+        display: none;
+    }
+
+    .sidebar {
+        right: 0;
+    }
+}
+
+@media (min-width: 735px) {
+    .sidebar {
+        display: none;
+    }
+}

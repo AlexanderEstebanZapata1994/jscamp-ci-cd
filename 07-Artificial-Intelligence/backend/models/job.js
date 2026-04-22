@@ -1,0 +1,31 @@
+import jobs from '../data/jobs.json' with { type: 'json' }
+import crypto from 'node:crypto';
+import { filterJobs, createJob, updateJob, deleteJob } from '../filtering-data.js';
+import { DEFAULTS } from '../test/config.js';
+
+export class JobModel {
+    static async getAll({ title, text, technology, location, level, limit = DEFAULTS.LIMIT, offset = DEFAULTS.OFFSET }) {
+        const limitNumber = Number(limit);
+        const offsetNumber = Number(offset);
+
+        let jobsFiltered = jobs;
+
+        jobsFiltered = filterJobs(jobsFiltered, title, text, technology, location, level);
+
+        const jobsPaginated = jobsFiltered.slice(offsetNumber, offsetNumber + limitNumber);
+        return { jobs: jobsPaginated, total: jobsFiltered.length, limit: limitNumber, offset: offsetNumber, results: jobsFiltered.length };
+    }
+
+    static async getById({ id}) {
+        const job = jobs.find((job) => job.id === id)
+        return job;
+    }
+
+    static async create({ titulo, empresa, ubicacion, descripcion, data, content }) {
+        const newJob = { id: crypto.randomUUID(), titulo, empresa, ubicacion, descripcion, data, content }
+        createJob(jobs, newJob)
+        return newJob;
+    }
+
+    //update
+}

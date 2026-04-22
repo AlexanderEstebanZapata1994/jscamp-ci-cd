@@ -1,0 +1,186 @@
+[
+    {
+        "id": "7a4d1d8b-1e45-4d8c-9f1a-8c2f9a9121a4",
+        "title": "Senior Software Engineer",
+        "company": "Tech Solutions Inc.",
+        "location": "Remote",
+        "description": "We are looking for a senior software engineer with experience in web development and knowledge of JavaScript, React and Node.js. The ideal candidate should be able to work in a team and have good communication skills.",
+        "data": {
+            "technologies": [
+                "react",
+                "node",
+                "javascript"
+            ],
+            "location": "remote",
+            "level": "senior"
+        }
+    },
+    {
+        "id": "d35b2c89-5d60-4f26-b19a-6cfb2f1a0f57",
+        "title": "Data Analyst",
+        "company": "Data Driven Co.",
+        "location": "Mexico City",
+        "description": "We are looking for a data analyst with experience in handling large datasets and visualization tools. Knowledge of SQL, Python and R is required.",
+        "data": {
+            "technologies": ["python", "sql"],
+            "location": "cdmx",
+            "level": "junior"
+        }
+    },
+    {
+        "id": "e31f9a92-61d7-4b7a-b3a2-91e8c1f40b2d",
+        "title": "Mobile Developer",
+        "company": "Mobile Apps Ltd.",
+        "location": "Guadalajara",
+        "description": "We are looking for a mobile developer with experience in iOS and/or Android. The candidate should have knowledge in Swift, Kotlin and user interface development.",
+        "data": {
+            "technologies": ["swift", "kotlin"],
+            "location": "guadalajara",
+            "level": "mid-level"
+        }
+    },
+    {
+        "id": "f62d8a34-923a-4ac2-9b0b-14e0ac2f5405",
+        "title": "DevOps Engineer",
+        "company": "Cloud Services SA",
+        "location": "Remote",
+        "description": "We are looking for a DevOps engineer with experience in managing cloud infrastructure, automation of processes and continuous integration tools. Knowledge of AWS, Azure or GCP is required.",
+        "data": {
+            "technologies": ["aws", "azure", "gcp"],
+            "location": "remote",
+            "level": "mid-level"
+        }
+    },
+    {
+        "id": "a9f31a8e-ec38-4fd3-9114-88cc6d37a92b",
+        "title": "UI/UX Designer",
+        "company": "Creative Minds Studio",
+        "location": "Barcelona",
+        "description": "We are looking for a UI/UX designer with a passion for creating exceptional digital experiences. Experience in Figma, user-centered design and collaboration with development teams is required.",
+        "data": {
+            "technologies": ["figma", "design"],
+            "location": "barcelona",
+            "level": "mid-level"
+        }
+    },
+    {
+        "id": "c1b65b42-68c5-4f1c-a8c2-8d52c5a7a5d1",
+        "title": "Database Administrator",
+        "company": "Secure Data Corp.",
+        "location": "Buenos Aires",
+        "description": "We are looking for a database administrator with experience in PostgreSQL and MySQL. The candidate should ensure the availability, security and performance of production databases.",
+        "data": {
+            "technologies": ["postgresql", "mysql"],
+            "location": "bsas",
+            "level": "mid-level"
+        }
+    },
+    {
+        "id": "bb8f2a99-6a20-4f9e-912a-16f54a49b8c3",
+        "title": "Cybersecurity Specialist",
+        "company": "SafeNet Solutions",
+        "location": "Remote",
+        "description": "We are looking for a cybersecurity specialist with knowledge in protecting infrastructure, vulnerability analysis and incident response. Experience with SIEM and security certifications is valued.",
+        "data": {
+            "technologies": ["siem", "security"],
+            "location": "remote",
+            "level": "mid-level"
+        }
+    },
+    {
+        "id": "fe7b2c54-4f47-4e2b-9e87-2b5413a6b24f",
+        "title": "Product Manager",
+        "company": "NextGen Technologies",
+        "location": "Madrid",
+        "description": "We are looking for a product manager with experience in defining and launching digital products. Analytical skills, leadership and knowledge of agile methodologies are required.",
+        "data": {
+            "technologies": ["mobile"],
+            "location": "madrid",
+            "level": "senior"
+        }
+    },
+    {
+        "id": "a71f7a92-56d9-4b42-9f16-cb29b40e5f2c",
+        "title": "Frontend Developer",
+        "company": "Bright Web Studio",
+        "location": "Valencia",
+        "description": "We are looking for a frontend developer with experience in React, TypeScript and Tailwind CSS. Experience in performance optimization and web accessibility is valued.",
+        "data": {
+            "technologies": ["react", "typescript", "tailwind"],
+            "location": "valencia",
+            "level": "mid-level"
+        }
+    },
+    {
+        "id": "f91e4c7b-3840-43da-8ad7-3a52e2a8cf1d",
+        "title": "Backend Developer",
+        "company": "APIWorks",
+        "location": "Bogotá",
+        "description": "We are looking for a backend developer with experience in Node.js, Express and NoSQL databases. Knowledge of microservices architecture is required.",
+        "data": {
+            "technologies": ["node", "express", "mongodb"],
+            "location": "bogota",
+            "level": "mid"
+        }
+    },
+    {
+        "id": "b65a3c9f-b174-4d86-b8a2-9cf9b1e13a22",
+        "title": "Machine Learning Engineer",
+        "company": "AI Labs",
+        "location": "Remote",
+        "description": "We are looking for a machine learning engineer with experience in prediction models and data processing. Knowledge in TensorFlow, PyTorch and MLOps is valued.",
+        "data": {
+            "technologies": ["python", "tensorflow", "mlops"],
+            "location": "remote",
+            "level": "senior"
+        }
+    },
+    {
+        "id": "e8d13c45-36cb-46cf-8f9d-8a0a7b532b8b",
+        "title": "QA/Automation Engineer",
+        "company": "Quality First",
+        "location": "Lima",
+        "description": "We are looking for a QA/Automation engineer with experience in testing automation using tools like Selenium, Cypress or Playwright. Knowledge in CI/CD is desired.",
+        "data": {
+            "technologies": ["selenium", "cypress", "playwright"],
+            "location": "lima",
+            "level": "mid-level"
+        }
+    },
+    {
+        "id": "d2e93b8a-0b41-4d09-9a52-36a0f418d493",
+        "title": "System Administrator",
+        "company": "InfraTech Global",
+        "location": "Santiago de Chile",
+        "description": "We are looking for a system administrator with experience in Linux, Docker and server monitoring. Knowledge in scripting Bash or Python is a plus.",
+        "data": {
+            "technologies": ["linux", "docker", "bash", "python"],
+            "location": "santiago",
+            "level": "mid-level"
+        }
+    },
+    {
+        "id": "cc0c1fae-4e85-4e2c-9b02-f12f9df8a2c9",
+        "title": "Scrum/Agile Master",
+        "company": "Agile Minds",
+        "location": "Madrid",
+        "description": "We are looking for a Scrum/Agile master with experience in agile methodologies and management of multidisciplinary teams. Scrum Master certification is desirable.",
+        "data": {
+            "technologies": ["scrum", "management", "certification"],
+            "location": "madrid",
+            "level": "mid-level"
+        }
+    },
+    {
+        "id": "a2f1d8c6-b72c-45f5-bcc5-5c1d1f39b0b1",
+        "title": "Technical Support Level 2",
+        "company": "HelpDesk Pro",
+        "location": "Monterrey",
+        "description": "We are looking for a technical support engineer with skills in incident resolution, networking and operating systems. Attention to detail and excellent customer service are required.",
+        "data": {
+            "technologies": ["support", "networking", "os"],
+            "location": "monterrey",
+            "level": "junior"
+        }
+    }
+]

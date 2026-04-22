@@ -1,0 +1,129 @@
+.main {
+  max-width: 90%;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+.details {
+  background-color: var(--background);
+  border: none;
+  box-shadow: none;
+}
+
+.breadcrumb {
+  display: flex;
+  width: 100%;
+  margin: 30px 0;
+  gap: 1rem;
+
+  .breadcrumbLink {
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.2s;
+    font-weight: 500;
+
+    &:hover,
+    &:focus {
+      color: var(--primary-light);
+      outline: none;
+    }
+  }
+  span {
+    color: var(--text-muted);
+    font: optional;
+  }
+  p {
+      color: var(--text-primary);
+      font-weight: 500;
+  }
+}
+
+.jobDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+}
+
+.jobDetailsHeader {
+  border: none;
+  padding: 0;
+  small {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+}
+
+.jobDetailsSection {
+  border: none;
+  padding: 0;
+  max-width: 70ch;
+  p > ul > li {
+      list-style: none;
+  }
+  li::before {
+    content: '✓';
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--green);
+    margin-right: 10px;
+  }
+}
+
+.buttonApplyNow {
+  background-color: var(--primary-light);
+  color: var(--text-primary);
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  min-width: 100px;
+  height: 40px;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 0px #1c669d;
+  transition: box-shadow 0.2s ease-in-out, transform 0.1s ease-in-out;
+  &:hover {
+    background-color: var(--primary-hover);
+  }
+  &:active {
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+  &:focus-within {
+    outline: var(--primary-light);
+    outline-offset: 2px;
+  }
+  &.isApplied {
+    background-color: var(--green);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+  &:disabled {
+    background-color: var(--text-muted);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.bottomButton {
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .jobDetailsHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .buttonApplyNow {
+    width: 30%;
+  }
+
+  .bottomButton {
+    align-self: center;
+  }
+}
