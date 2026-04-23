@@ -1,7 +1,7 @@
 import jobs from '../data/jobs.json' with { type: 'json' }
 import crypto from 'node:crypto';
 import { filterJobs, createJob, updateJob, deleteJob } from '../filtering-data.js';
-import { DEFAULTS } from '../test/config.js';
+import { DEFAULTS } from '../config.js';
 
 export class JobModel {
     static async getAll({ title, text, technology, location, level, limit = DEFAULTS.LIMIT, offset = DEFAULTS.OFFSET }) {
@@ -16,8 +16,8 @@ export class JobModel {
         return { jobs: jobsPaginated, total: jobsFiltered.length, limit: limitNumber, offset: offsetNumber, results: jobsFiltered.length };
     }
 
-    static async getById({ id}) {
-        const job = jobs.find((job) => job.id === id)
+    static async getById(id) {
+        const job = jobs.find(job => job.id === id)
         return job;
     }
 

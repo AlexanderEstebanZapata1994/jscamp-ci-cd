@@ -1,7 +1,7 @@
 import { test, describe, before, after } from 'node:test';
 import assert from 'node:assert';
 import { app } from '../app.js';
-import { DEFAULTS } from './config.js';
+import { DEFAULTS } from '../config.js';
 
 let server;
 
