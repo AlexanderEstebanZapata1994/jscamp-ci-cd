@@ -10,7 +10,7 @@ export class JobController {
 
     static async getById(req, res) {
         const { id } = req.params;
-        const job = await JobModel.getById({ id });
+        const job = await JobModel.getById(id);
     
         if (!job) {
             return res.status(404).json({ error: 'Job not found' })

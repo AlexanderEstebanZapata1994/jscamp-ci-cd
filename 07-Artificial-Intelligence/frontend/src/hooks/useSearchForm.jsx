@@ -3,7 +3,13 @@ import { SEARCH_DEBOUNCE_TIME } from "../constants.js";
 
 export const useSearchForm = ({idText, idTechnology, idLocation, idExperienceLevel, onFiltersChange}) => {
 
-    const timeoutIdRef = useRef(0);
+    const timeoutIdRef = useRef(0); //Explain why we use useRef here
+    // useRef is used to store the timeout id so that we can clear it later
+    // if the user types quickly, we don't want to make multiple requests
+    // so we use useRef to store the timeout id and clear it later
+    // this is a common pattern in React to avoid making multiple requests
+    // when the user types quickly
+    // this is a common pattern in React to avoid making multiple requests
 
     const handleSubmitChange = (event) => {
         event.preventDefault();

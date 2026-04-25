@@ -6,52 +6,11 @@ import styles from './Details.module.css';
 import { DetailsSection } from './DetailsSection.jsx';
 import { FavoriteButton } from '../Search/components/JobCard/components/FavoriteButton/FavoriteButton.jsx';
 import { ApplyJobButton } from '../Search/components/JobCard/components/ApplyJobButton/ApplyJobButton.jsx';
-import { Button } from '../../components/Button/Button.jsx';
+import AIJobSummary from './components/AIJobSummary.jsx';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const AIJobSummary = ({ jobId }) => {
-    const [summary, setSummary] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    const generateSummary = async () => {
-        setLoading(true)
-        setError(null)
-
-        try {
-            const response = await fetch(`${API_URL}/ai/summary/${jobId}`)
-
-            if (!response.ok) {
-                throw new Error("Error fetching summary.")
-            }
-
-            const data = await response.json();
-            setSummary(data.summary)
-        } catch (error) {
-            setError(error.message)
-            setSummary(null)
-        } finally {
-            setLoading(false)
-        }
-    }
-
-    return (
-        <Button
-            onClick={generateSummary}
-            disabled={loading}
-            type="primary"
-            icon="chat_bubble"
-            className={styles.summaryButton}
-        >
-            {loading ? <Spinner text="Loading summary..." animationDuration=".5s" borderWidth="5px" height="200px" width="200px" /> : error ? <p>{error}</p> : summary ? <p>{summary}</p> : <p>No summary found</p>}
-        </Button>
-    )
-}
-
-
 export default function JobDetailsPage() {
-
     const { id } = useParams();
 
     const [job, setJob] = useState(null);
@@ -107,8 +66,8 @@ export default function JobDetailsPage() {
                         </span>
                         <FavoriteButton jobId={job.id} />
                         <ApplyJobButton jobId={job.id} />
-                        <AIJobSummary jobId={job.id} />
                     </header>
+                    <AIJobSummary jobId={job.id} />
                     <DetailsSection title="Job Description" description={job.descripcion} formatContent={false}/>
                     <DetailsSection title="Responsibilities" description={job.content.responsibilities} formatContent={true} />
                     <DetailsSection title="Requirements" description={job.content.requirements} formatContent={true} />

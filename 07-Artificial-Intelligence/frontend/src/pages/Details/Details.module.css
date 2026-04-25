@@ -48,6 +48,7 @@
 .jobDetailsHeader {
   border: none;
   padding: 0;
+  justify-content: start;
   small {
     color: var(--text-muted);
     font-size: 1rem;
