@@ -15,6 +15,7 @@ export default function AIJobSummary ({ jobId }) {
     const generateSummary = async () => {
         setLoading(true)
         setError(null)
+        setSummary(''); // Reset the summary to an empty string
 
         try {
             const response = await fetch(`${API_URL}/ai/summary/${jobId}`)
@@ -23,8 +24,18 @@ export default function AIJobSummary ({ jobId }) {
                 throw new Error("Error fetching summary.")
             }
 
-            const data = await response.json();
-            setSummary(data.summary)
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+
+            // This loop reads the response chunk by chunk and sets the summary as it is received
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                const chunkText = decoder.decode(value, { stream: true });
+                setSummary(previousValue => previousValue ? previousValue + chunkText : chunkText);
+            }
+
         } catch (error) {
             setError(error.message)
             setSummary(null)

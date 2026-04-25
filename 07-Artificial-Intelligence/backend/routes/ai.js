@@ -57,10 +57,13 @@ aiRouter.get('/summary/:id', async (req, res) => {
         })
 
         for await (const chunk of stream) {
-            res.write(chunk.choices[0]?.delta?.content ?? 'No content available');
+            const content = chunk.choices[0]?.delta?.content;
+            if (content) {
+                res.write(content);
+            }
         }
 
-        res.end();
+        res.end(); // End the response
     } catch (error) {
         if (!res.headersSent) {
             res.setHeader('Content-Type', 'application/json'); // Reset the headers to avoid chunked encoding
