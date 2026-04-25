@@ -3,13 +3,12 @@ import { useSearchParams } from "react-router";
 
 import { 
     PARAMETERS, 
-    ITEMS_PER_PAGE, 
-    API_URL,
+    ITEMS_PER_PAGE,
     DEFAULT_PAGE
 } from "../constants.js";
 
 export const useFilters = () => {
-
+    const API_URL = import.meta.env.VITE_API_URL;
     const [searchParams, setSearchParams] = useSearchParams();
 
     const [currentPage, setCurrentPage] = useState(() => {
@@ -52,8 +51,7 @@ export const useFilters = () => {
 
                 const offset = (currentPage - 1) * ITEMS_PER_PAGE;
                 const limit = ITEMS_PER_PAGE;
-
-                const urlString = `${API_URL}?${PARAMETERS.offset}=${offset}&${PARAMETERS.limit}=${limit}&${searchParams.toString()}`;
+                const urlString = `${API_URL}/jobs?${PARAMETERS.offset}=${offset}&${PARAMETERS.limit}=${limit}&${searchParams.toString()}`;
                 const response = await fetch(urlString)
 
                 if (!response.ok) {
