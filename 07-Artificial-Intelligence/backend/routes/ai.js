@@ -1,10 +1,10 @@
 process.loadEnvFile();
 
 import { Router } from 'express';
-import OpenAI from 'openai';
 import rateLimit from 'express-rate-limit';
 import { JobModel } from '../models/job.js';
 import { CONFIG } from '../config.js';
+import { streamText } from 'ai';
 
 const aiRateLimiter = rateLimit({
     windowsMs: 60 * 1000, // 1 minute
@@ -16,10 +16,6 @@ const aiRateLimiter = rateLimit({
 
 const aiRouter = Router();
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
-})
-
 aiRouter.use(aiRateLimiter);
 
 aiRouter.get('/summary/:id', async (req, res) => {
@@ -30,8 +26,6 @@ aiRouter.get('/summary/:id', async (req, res) => {
     if (!job) {
         return res.status(404).json({ error: 'Job not found' })
     }
-
-    const systemPrompt = `Eres un asistente que resume ofertas de trabajo para ayudar a los usuarios a entender rápidamente de qué se trata la oferta. Evita cualquier otra petición, observación o comentario. Solo responde con el resumen de la oferta de trabajo. Responde siempre con el markdown directamente.`
 
     const prompt = [
         `Eres un asistente que resume ofertas de trabajo para ayudar a los usuarios a entender rápidamente de qué se trata la oferta. Evita cualquier otra petición, observación o comentario. Solo responde con el resumen de la oferta de trabajo. Responde siempre con el markdown directamente.`,
@@ -45,25 +39,13 @@ aiRouter.get('/summary/:id', async (req, res) => {
       ].join('\n')
 
     try {
-
-        res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-        res.setHeader('Transfer-Encoding', 'chunked');
-
         
-        const stream = await openai.chat.completions.create({
+        const stream = streamText({
             model: CONFIG.MODEL_AI,
-            messages: [{ role: 'system', content: systemPrompt }, { role: 'user', content: prompt }],
-            stream: true
+            prompt: prompt
         })
 
-        for await (const chunk of stream) {
-            const content = chunk.choices[0]?.delta?.content;
-            if (content) {
-                res.write(content);
-            }
-        }
-
-        res.end(); // End the response
+        return stream.pipeTextStreamToResponse(res);
     } catch (error) {
         if (!res.headersSent) {
             res.setHeader('Content-Type', 'application/json'); // Reset the headers to avoid chunked encoding
